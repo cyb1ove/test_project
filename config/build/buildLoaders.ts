@@ -3,33 +3,45 @@ import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+  const svgLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: ['@svgr/webpack'],
+  };
+
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           modules: {
             auto: /.*\.module\..*/,
             localIdentName: isDev
-              ? "[path][name]__[local]--[hash:base64:8]"
-              : "[hash:base64:8]",
-          }
-        }
+              ? '[path][name]__[local]--[hash:base64:8]'
+              : '[hash:base64:8]',
+          },
+        },
       },
-      "sass-loader",
+      'sass-loader',
     ],
-  }
+  };
 
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
     exclude: /node_modules/,
-  }
+  };
 
-  return [
-    typescriptLoader,
-    cssLoader,
-  ]
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif|woff2)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  };
+
+  return [fileLoader, svgLoader, typescriptLoader, cssLoader];
 }

@@ -1,3 +1,1 @@
-import ThemeProvider from './ui/ThemeProvider';
-
-export { ThemeProvider };
+export { Theme, ThemeProvider } from './ui/ThemeProvider';
