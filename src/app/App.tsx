@@ -1,6 +1,7 @@
 import './styles/index.scss';
 
 import clsx from 'clsx';
+import { Suspense } from 'react';
 import { useTheme } from 'shared/hooks/useTheme';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
@@ -12,12 +13,16 @@ const App = () => {
 
   return (
     <div className={clsx('app', theme)}>
-      <Navbar />
+      <Suspense fallback="">
+        <Navbar />
 
-      <div className="content-page">
-        <Sidebar />
-        <AppRouter />
-      </div>
+        <div className="content-page">
+          <Sidebar />
+          <div className="page-wrapper">
+            <AppRouter />
+          </div>
+        </div>
+      </Suspense>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import { FC, useState } from 'react';
+import { LanguageSwitcher } from 'shared/ui/LanguageSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 
 import classes from './Sidebar.module.scss';
@@ -23,8 +24,9 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
     >
       <button onClick={onToggle}>toggle</button>
 
-      <div className={classes.switchers}>
+      <div className={clsx(classes.switchers, collapsed && classes.vertical)}>
         <ThemeSwitcher />
+        <LanguageSwitcher />
       </div>
     </div>
   );
