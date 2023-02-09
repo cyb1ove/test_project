@@ -21,9 +21,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       className={clsx(classes.Sidebar, className, {
         [classes.collapsed]: collapsed,
       })}
+      onClick={onToggle}
     >
-      <button onClick={onToggle}>+</button>
-
       <div className={clsx(classes.switchers, collapsed && classes.vertical)}>
         <ThemeSwitcher />
         <LanguageSwitcher />

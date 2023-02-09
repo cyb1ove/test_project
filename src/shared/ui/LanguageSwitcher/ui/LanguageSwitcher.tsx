@@ -13,7 +13,9 @@ interface LanguageSwitcherProps {
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
   const { i18n } = useTranslation();
 
-  const toggle = () => {
+  const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
   };
 
