@@ -16,14 +16,16 @@
     "airbnb-typescript",
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:i18next/recommended"
   ],
   "plugins": [
     "import",
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "simple-import-sort"
+    "simple-import-sort",
+    "i18next"
   ],
   "settings": {
     "import/resolver": {
@@ -81,16 +83,26 @@
     "react/function-component-definition": "off",
     "eslint-disable react/jsx-curly-spacing": "off",
     "missing-optional-annotation": "off",
-    "react/jsx-props-no-spreading": "off",
+    "react/jsx-props-no-spreading": "warn",
     "react/require-default-props": "off",
     "no-underscore-dangle": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": "warn",
     "no-shadow": "off",
     "default-param-last": "off",
     "import/prefer-default-export": "off",
     "eslint-plugin-react": "off",
     "no-else-return": "off",
     "react/jsx-one-expression-per-line": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "typescript-eslint/naming-convention": "off",
+    "i18next/no-literal-string": [
+      "error",
+      {
+        "markupOnly": true,
+        "onlyAttribute": [
+          ""
+        ]
+      }
+    ]
   }
 }

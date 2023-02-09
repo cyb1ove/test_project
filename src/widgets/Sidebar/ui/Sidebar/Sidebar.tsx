@@ -22,7 +22,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         [classes.collapsed]: collapsed,
       })}
     >
-      <button onClick={onToggle}>toggle</button>
+      <button onClick={onToggle}>+</button>
 
       <div className={clsx(classes.switchers, collapsed && classes.vertical)}>
         <ThemeSwitcher />
