@@ -11,15 +11,18 @@
     "lint:scss:fix": "stylelint **/*.scss --fix",
     "lint:ts": "eslint ./src",
     "lint:ts:fix": "eslint ./src --fix",
-    "lint": "concurrently \"npm run lint:scss:fix\" \"npm run lint:ts:fix\""
+    "lint": "concurrently \"npm run lint:scss:fix\" \"npm run lint:ts:fix\"",
+    "test": "jest --config ./config/jest/jest.config.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@svgr/webpack": "^6.2.1",
+    "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
@@ -42,6 +45,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.3",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "prettier": "^2.8.3",
     "react-refresh": "^0.14.0",
