@@ -1,0 +1,32 @@
+.PageLoader {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.loader {
+  display: inline-block;
+
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+
+  border: 5px solid var(--inverted-bg-color);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
