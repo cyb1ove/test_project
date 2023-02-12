@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { FC } from 'react';
 import ThemeIcon from 'shared/assets/icons/theme.svg';
 import { useTheme } from 'shared/hooks/useTheme';
-import { Button, ThemeButton } from 'shared/ui/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
 import classes from './ThemeSwitcher.module.scss';
 

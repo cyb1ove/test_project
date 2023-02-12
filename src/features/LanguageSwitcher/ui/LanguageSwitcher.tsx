@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import TranslateIcon from 'shared/assets/icons/translate.svg';
-import { Button, ThemeButton } from 'shared/ui/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
 import classes from './LanguageSwitcher.module.scss';
 

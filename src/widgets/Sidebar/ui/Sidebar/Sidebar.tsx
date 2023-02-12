@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
+import { LanguageSwitcher } from 'features/LanguageSwitcher';
+import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC, useState } from 'react';
-import { LanguageSwitcher } from 'shared/ui/LanguageSwitcher';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 
 import classes from './Sidebar.module.scss';
 

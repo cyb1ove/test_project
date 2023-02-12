@@ -26,7 +26,8 @@
     "react-hooks",
     "@typescript-eslint",
     "simple-import-sort",
-    "i18next"
+    "i18next",
+    "unused-imports"
   ],
   "settings": {
     "import/resolver": {
@@ -104,6 +105,7 @@
           ""
         ]
       }
-    ]
+    ],
+    "unused-imports/no-unused-imports": "warn"
   }
 }

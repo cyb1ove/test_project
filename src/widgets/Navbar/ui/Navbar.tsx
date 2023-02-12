@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppLink } from 'shared/ui/AppLink';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 
 import classes from './Navbar.module.scss';
 
