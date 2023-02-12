@@ -1,5 +1,6 @@
+import { ErrorContext } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
 import { clsx } from 'clsx';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 
@@ -11,10 +12,11 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { t } = useTranslation();
+  const { clearError } = useContext(ErrorContext);
 
   return (
     <div className={clsx(classes.Navbar, className)}>
-      <div className={clsx(classes.links)}>
+      <div onClick={clearError} className={clsx(classes.links)}>
         <AppLink to={'/'} className={classes.mainLink}>
           {t('Главная')}
         </AppLink>
