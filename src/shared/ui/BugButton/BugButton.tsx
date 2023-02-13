@@ -1,4 +1,3 @@
-import { clsx } from 'clsx';
 import { FC, useEffect, useState } from 'react';
 
 import { Button } from '../Button/Button';
