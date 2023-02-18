@@ -13,7 +13,7 @@
     "lint:ts:fix": "npx eslint ./src --fix",
     "lint": "concurrently \"npm run lint:scss:fix\" \"npm run lint:ts:fix\"",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test",
+    "test:ui": "npx loki test --port 6006",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri='file:./storybook-static'",
     "storybook": "start-storybook -p 6006 -c ./config/.storybook",
