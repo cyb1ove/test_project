@@ -22,7 +22,7 @@ export function buildPlugins({
       IS_DEV: JSON.stringify(isDev),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin(),
+    new ReactRefreshWebpackPlugin({ overlay: false }),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
     }),
