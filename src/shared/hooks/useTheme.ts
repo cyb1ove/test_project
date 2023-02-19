@@ -8,14 +8,14 @@ import {
 
 interface UseThemeResult {
   theme: Theme;
-  toggleTheme: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  toggleTheme: () => void;
 }
 
 export function useTheme(): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
+  const toggleTheme = () => {
+    // event.stopPropagation();
 
     const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
     setTheme(newTheme);

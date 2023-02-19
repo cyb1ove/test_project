@@ -2,5 +2,7 @@
   "Главная": "Main",
   "О сайте": "About us",
   "Страница не найдена": "Page not find",
-  "Произошла непредвиденная ошибка": "Unexpected error occurred"
+  "Произошла непредвиденная ошибка": "Unexpected error occurred",
+  "Тёмная тема": "Dark mode",
+  "Светлая тема": "Light mode"
 }

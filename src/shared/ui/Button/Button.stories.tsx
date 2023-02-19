@@ -62,3 +62,11 @@ SizeLarge.args = {
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.LARGE,
 };
+
+export const Squared = Template.bind({});
+Squared.args = {
+  children: 'RU',
+  theme: ThemeButton.BACKGROUND,
+  size: ButtonSize.LARGE,
+  squared: true,
+};

@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, LinkProps } from 'react-router-dom';
 
 import classes from './AppLink.module.scss';
@@ -12,22 +13,32 @@ export enum AppLinkTheme {
 interface AppLinkProps extends LinkProps {
   className?: string;
   theme?: AppLinkTheme;
+  text: string;
+  icon: ReactElement;
+  collapsed: boolean;
 }
 
 export const AppLink: FC<AppLinkProps> = ({
   to,
   className,
-  children,
   theme = AppLinkTheme.PRIMARY,
+  text,
+  icon,
+  collapsed,
   ...otherProps
 }) => {
+  const { t } = useTranslation();
+  const mods = [classes[theme], { [classes.collapsed]: collapsed }];
+
   return (
     <Link
       to={to}
-      className={clsx(classes.AppLink, [className, classes[theme]])}
+      className={clsx(classes.AppLink, className, mods)}
       {...otherProps}
     >
-      {children}
+      <div className={classes.icon}>{icon}</div>
+
+      <span className={classes.text}>{t(text)}</span>
     </Link>
   );
 };

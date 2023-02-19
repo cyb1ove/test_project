@@ -1,29 +1,21 @@
 .Sidebar {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
+  padding: 10px 14px;
 
   background: var(--sidebar-color);
 
-  transition: width 0.3s;
-}
+  transition: width 0.4s;
 
-.collapsed {
-  width: var(--sidebar-width-collapsed);
-}
-
-.switchers {
-  position: absolute;
-  bottom: 20px;
-
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
+  &.collapsed {
+    width: var(--sidebar-width-collapsed);
+  }
 }
 
 .vertical {
@@ -32,8 +24,35 @@
 
 .collapsedBtn {
   position: absolute;
-  bottom: 80px;
+  bottom: 100px;
   right: 0;
 
   transform: translateX(50%);
+}
+
+.collapsed .collapsedBtn {
+  transform: translateX(50%) rotate(180deg);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+
+  height: 50px;
+  margin-top: 10px;
+
+  border-radius: var(--button-border-radius);
+
+  transition: var(--tran-04);
+
+  &:hover {
+    color: var(--background-text-color);
+
+    background-color: var(--primary-color);
+  }
 }

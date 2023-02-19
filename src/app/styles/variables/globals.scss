@@ -1,11 +1,11 @@
-@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap';
 
 * {
-  font-family: Poppins, sans-serif;
+  font-weight: 700;
 }
 
 :root {
-  --font-family-main: consolas, 'Times New Roman', serif;
+  --font-family-main: 'Mulish', sans-serif;
   --font-size-m: 18px;
   --font-line-m: 30px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -18,7 +18,14 @@
 
   // Sizes
   --navbar-height: 50px;
-  --sidebar-width: 300px;
-  --sidebar-width-collapsed: 56px;
+  --sidebar-width: 270px;
+  --sidebar-width-collapsed: 90px;
   --button-border-radius: 6px;
+
+  // Transition
+
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
 }
