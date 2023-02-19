@@ -29,3 +29,15 @@
 .vertical {
   flex-direction: column;
 }
+
+.collapsedBtn {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: translateX(50%);
+}

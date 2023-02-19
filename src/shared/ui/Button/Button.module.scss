@@ -1,4 +1,6 @@
 .Button {
+  padding: 0;
+
   cursor: pointer;
 }
 
@@ -21,4 +23,37 @@
   border: 1px solid var(--primary-color);
 
   background: none;
+}
+
+.background {
+  color: var(--primary-color);
+
+  border: none;
+
+  background-color: var(--secondary-color);
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.small {
+  width: var(--font-line-m);
+  height: var(--font-line-m);
+
+  font-size: var(--font-size-m);
+}
+
+.medium {
+  width: var(--font-line-l);
+  height: var(--font-line-l);
+
+  font-size: var(--font-size-l);
+}
+
+.large {
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
+
+  font-size: var(--font-size-xl);
 }

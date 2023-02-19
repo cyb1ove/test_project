@@ -6,23 +6,35 @@ import classes from './Button.module.scss';
 export enum ThemeButton {
   CLEAR = 'clear',
   OUTLINE = 'outline',
+  BACKGROUND = 'background',
+}
+
+export enum ButtonSize {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
+  rounded?: boolean;
+  size?: ButtonSize;
 }
 
 export const Button: FC<ButtonProps> = ({
   children,
   className,
-  theme,
+  theme = ThemeButton.CLEAR,
+  rounded = false,
+  size = ButtonSize.SMALL,
   ...otherProps
-}) => (
-  <button
-    className={clsx(classes.Button, className, classes[theme])}
-    {...otherProps}
-  >
-    {children}
-  </button>
-);
+}) => {
+  const mods = [classes[theme], classes[size], { [classes.rounded]: rounded }];
+
+  return (
+    <button className={clsx(classes.Button, className, mods)} {...otherProps}>
+      {children}
+    </button>
+  );
+};
