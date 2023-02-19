@@ -1,8 +1,12 @@
 import { clsx } from 'clsx';
-import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC, useState } from 'react';
-import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
+import {
+  Button,
+  ButtonRoundedTypes,
+  ButtonSize,
+  ThemeButton,
+} from 'shared/ui/Button/Button';
 
 import classes from './Sidebar.module.scss';
 
@@ -28,7 +32,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         onClick={onToggle}
         className={classes.collapsedBtn}
         theme={ThemeButton.BACKGROUND}
-        rounded
+        rounded={ButtonRoundedTypes.FULL}
         size={ButtonSize.SMALL}
       >
         {collapsed ? '>' : '<'}
@@ -36,7 +40,6 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
       <div className={clsx(classes.switchers, collapsed && classes.vertical)}>
         <ThemeSwitcher />
-        <LanguageSwitcher />
       </div>
     </div>
   );

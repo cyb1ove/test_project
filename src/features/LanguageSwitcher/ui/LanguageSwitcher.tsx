@@ -1,8 +1,12 @@
 import { clsx } from 'clsx';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import TranslateIcon from 'shared/assets/icons/translate.svg';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import {
+  Button,
+  ButtonRoundedTypes,
+  ButtonSize,
+  ThemeButton,
+} from 'shared/ui/Button/Button';
 
 import classes from './LanguageSwitcher.module.scss';
 
@@ -21,11 +25,14 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
 
   return (
     <Button
-      theme={ThemeButton.CLEAR}
+      theme={ThemeButton.BACKGROUND}
       className={clsx(classes.LanguageSwitcher, className)}
       onClick={toggle}
+      rounded={ButtonRoundedTypes.PARTLY}
+      size={ButtonSize.MEDIUM}
+      squared
     >
-      <TranslateIcon />
+      {i18n.language}
     </Button>
   );
 };

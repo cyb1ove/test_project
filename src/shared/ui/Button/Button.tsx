@@ -15,11 +15,17 @@ export enum ButtonSize {
   LARGE = 'large',
 }
 
+export enum ButtonRoundedTypes {
+  FULL = 'full',
+  PARTLY = 'partly',
+}
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
-  rounded?: boolean;
+  rounded?: ButtonRoundedTypes;
   size?: ButtonSize;
+  squared?: boolean;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -28,9 +34,15 @@ export const Button: FC<ButtonProps> = ({
   theme = ThemeButton.CLEAR,
   rounded = false,
   size = ButtonSize.SMALL,
+  squared,
   ...otherProps
 }) => {
-  const mods = [classes[theme], classes[size], { [classes.rounded]: rounded }];
+  const mods = [
+    classes[theme],
+    classes[size],
+    rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
+    { [classes.squared]: squared },
+  ];
 
   return (
     <button className={clsx(classes.Button, className, mods)} {...otherProps}>

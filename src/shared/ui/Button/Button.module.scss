@@ -1,5 +1,9 @@
 .Button {
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 8px;
 
   cursor: pointer;
 }
@@ -33,27 +37,43 @@
   background-color: var(--primary-color);
 }
 
-.rounded {
+.full_rounded {
   border-radius: 50%;
 }
 
+.partly_rounded {
+  border-radius: var(--button-border-radius);
+}
+
 .small {
-  width: var(--font-line-m);
   height: var(--font-line-m);
+  min-width: var(--font-line-m);
 
   font-size: var(--font-size-m);
+
+  &.squared {
+    width: var(--font-line-m);
+  }
 }
 
 .medium {
-  width: var(--font-line-l);
   height: var(--font-line-l);
+  min-width: var(--font-line-l);
 
   font-size: var(--font-size-l);
+
+  &.squared {
+    width: var(--font-line-l);
+  }
 }
 
 .large {
-  width: var(--font-line-xl);
   height: var(--font-line-xl);
+  min-width: var(--font-line-xl);
 
   font-size: var(--font-size-xl);
+
+  &.squared {
+    width: var(--font-line-xl);
+  }
 }
