@@ -54,6 +54,6 @@
     align-items: center;
 
     height: 100%;
-    min-width: 60px;
+    min-width: var(--sidebar-images-space);
   }
 }

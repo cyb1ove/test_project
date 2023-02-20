@@ -1,7 +1,6 @@
-import { ErrorContext } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
 import { clsx } from 'clsx';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
-import { FC, useContext, useState } from 'react';
+import { FC, useState } from 'react';
 import HomeIcon from 'shared/assets/icons/home.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
@@ -23,8 +22,6 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const { clearError } = useContext(ErrorContext);
-
   const onToggle = () => {
     setCollapsed((prev) => !prev);
   };
@@ -37,6 +34,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       })}
     >
       <Button
+        data-testid="collapse-button"
         onClick={onToggle}
         className={classes.collapsedBtn}
         theme={ThemeButton.BACKGROUND}
@@ -47,25 +45,21 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       </Button>
 
       <ul className={classes.items}>
-        <li className={classes.item} onClick={clearError}>
-          <AppLink
-            to={RoutePath.main}
-            className={classes.link}
-            text="Главная"
-            icon={<HomeIcon />}
-            collapsed={collapsed}
-          />
-        </li>
+        <AppLink
+          to={RoutePath.main}
+          className={classes.link}
+          text="Главная"
+          icon={<HomeIcon />}
+          collapsed={collapsed}
+        />
 
-        <li className={classes.item} onClick={clearError}>
-          <AppLink
-            to={RoutePath.about}
-            className={classes.link}
-            text="О сайте"
-            icon={<ListIcon />}
-            collapsed={collapsed}
-          />
-        </li>
+        <AppLink
+          to={RoutePath.about}
+          className={classes.link}
+          text="О сайте"
+          icon={<ListIcon />}
+          collapsed={collapsed}
+        />
       </ul>
 
       <div className={clsx(classes.switchers)}>

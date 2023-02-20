@@ -12,6 +12,12 @@
   background: var(--bg-color);
 
   transition: var(--tran-02);
+
+  *::selection {
+    color: var(--background-text-color);
+
+    background-color: var(--primary-color);
+  }
 }
 
 .content-page {

@@ -1,19 +1,21 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTranlation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation';
+import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 
 import { Sidebar } from './Sidebar';
 
 describe('Sidebar', () => {
   test('Sidebar is existing', () => {
-    renderWithTranlation(<Sidebar />);
+    componentRender(<Sidebar />);
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
   test('Test toggle', () => {
-    renderWithTranlation(<Sidebar />);
+    componentRender(<Sidebar />);
     const sidebar = screen.getByTestId('sidebar');
+    const button = screen.getByTestId('collapse-button');
     expect(sidebar).toBeInTheDocument();
-    fireEvent.click(sidebar);
+    expect(button).toBeInTheDocument();
+    fireEvent.click(button);
     expect(sidebar).toHaveClass('collapsed');
   });
 });

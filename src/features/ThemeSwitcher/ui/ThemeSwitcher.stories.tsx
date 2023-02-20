@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator';
+import { SidebarDecorator } from 'widgets/Sidebar/ui/Sidebar/SidebarDecorator';
 
 import { ThemeSwitcher } from './ThemeSwitcher';
 
@@ -18,7 +19,14 @@ const Template: ComponentStory<typeof ThemeSwitcher> = (args) => (
 
 export const Light = Template.bind({});
 Light.args = {};
+Light.decorators = [SidebarDecorator(false)];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK), SidebarDecorator(false)];
+
+export const Collapsed = Template.bind({});
+Collapsed.args = {
+  collapsed: true,
+};
+Collapsed.decorators = [SidebarDecorator(true)];

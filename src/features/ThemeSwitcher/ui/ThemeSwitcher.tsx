@@ -37,7 +37,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
       </div>
 
       <span className={classes.mode_text}>
-        {theme === Theme.DARK ? t('Тёмная тема') : t('Светлая тема')}
+        {theme === Theme.DARK ? t('Тёмная') : t('Светлая')}
       </span>
 
       <div className={classes.toggle_switch}>

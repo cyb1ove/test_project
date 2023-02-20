@@ -1,5 +1,6 @@
+import { ErrorContext } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
 import { clsx } from 'clsx';
-import { FC, ReactElement } from 'react';
+import { FC, ReactElement, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, LinkProps } from 'react-router-dom';
 
@@ -28,17 +29,16 @@ export const AppLink: FC<AppLinkProps> = ({
   ...otherProps
 }) => {
   const { t } = useTranslation();
+  const { clearError } = useContext(ErrorContext);
   const mods = [classes[theme], { [classes.collapsed]: collapsed }];
 
   return (
-    <Link
-      to={to}
-      className={clsx(classes.AppLink, className, mods)}
-      {...otherProps}
-    >
-      <div className={classes.icon}>{icon}</div>
+    <li className={clsx(classes.AppLink, className, mods)} onClick={clearError}>
+      <Link to={to} className={classes.link} {...otherProps}>
+        <div className={classes.icon}>{icon}</div>
 
-      <span className={classes.text}>{t(text)}</span>
-    </Link>
+        <span className={classes.text}>{t(text)}</span>
+      </Link>
+    </li>
   );
 };

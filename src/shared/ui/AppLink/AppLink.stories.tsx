@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
+import HomeIcon from 'shared/assets/icons/home.svg';
 import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator';
+import { SidebarDecorator } from 'widgets/Sidebar/ui/Sidebar/SidebarDecorator';
 
 import { AppLink, AppLinkTheme } from './AppLink';
 
@@ -21,26 +23,30 @@ const Template: ComponentStory<typeof AppLink> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
+  text: 'Text',
+  icon: <HomeIcon />,
 };
+Primary.decorators = [SidebarDecorator(false)];
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: 'Text',
+  text: 'Text',
+  icon: <HomeIcon />,
   theme: AppLinkTheme.SECONDARY,
 };
+Secondary.decorators = [SidebarDecorator(false)];
 
-export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-  children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
+export const Dark = Template.bind({});
+Dark.args = {
+  text: 'Text',
+  icon: <HomeIcon />,
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK), SidebarDecorator(false)];
 
-export const SecondaryDark = Template.bind({});
-Secondary.args = {
-  children: 'Text',
-  theme: AppLinkTheme.SECONDARY,
+export const Collapsed = Template.bind({});
+Collapsed.args = {
+  text: 'Text',
+  icon: <HomeIcon />,
+  collapsed: true,
 };
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+Collapsed.decorators = [ThemeDecorator(Theme.DARK), SidebarDecorator(true)];
