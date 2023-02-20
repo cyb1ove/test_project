@@ -7,6 +7,8 @@
 
   border-radius: var(--button-border-radius);
 
+  overflow: hidden;
+
   transition: var(--tran-04);
 
   &:hover {
@@ -28,6 +30,20 @@
     &:hover {
       color: var(--background-text-color);
     }
+  }
+
+  & .active_link {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    height: 100%;
+
+    color: var(--text-color);
+    color: var(--background-text-color);
+    text-decoration: none;
+
+    background-color: var(--primary-color);
   }
 
   & .text {

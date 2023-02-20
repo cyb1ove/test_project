@@ -2,7 +2,7 @@ import { ErrorContext } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
 import { clsx } from 'clsx';
 import { FC, ReactElement, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, LinkProps } from 'react-router-dom';
+import { LinkProps, NavLink } from 'react-router-dom';
 
 import classes from './AppLink.module.scss';
 
@@ -34,11 +34,17 @@ export const AppLink: FC<AppLinkProps> = ({
 
   return (
     <li className={clsx(classes.AppLink, className, mods)} onClick={clearError}>
-      <Link to={to} className={classes.link} {...otherProps}>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          isActive ? classes.active_link : classes.link
+        }
+        {...otherProps}
+      >
         <div className={classes.icon}>{icon}</div>
 
         <span className={classes.text}>{t(text)}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };
