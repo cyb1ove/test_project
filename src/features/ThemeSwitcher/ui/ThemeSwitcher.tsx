@@ -32,13 +32,15 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
 
   return (
     <div className={clsx(classes.ThemeSwitcher, className, mods)}>
-      <div className={classes.moon_sun}>
-        {theme === Theme.DARK ? <MoonIcon /> : <SunIcon />}
-      </div>
+      <div className={classes.theme}>
+        <div className={classes.moon_sun}>
+          {theme === Theme.DARK ? <MoonIcon /> : <SunIcon />}
+        </div>
 
-      <span className={classes.mode_text}>
-        {theme === Theme.DARK ? t('Тёмная') : t('Светлая')}
-      </span>
+        <span className={classes.mode_text}>
+          {theme === Theme.DARK ? t('Тёмная') : t('Светлая')}
+        </span>
+      </div>
 
       <div className={classes.toggle_switch}>
         <Switch
