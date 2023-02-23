@@ -6,7 +6,7 @@ import { SidebarDecorator } from 'widgets/Sidebar/ui/Sidebar/SidebarDecorator';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
-  title: 'shared/ThemeSwitcher',
+  title: 'features/ThemeSwitcher',
   component: ThemeSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' },

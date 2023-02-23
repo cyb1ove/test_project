@@ -7,7 +7,11 @@ interface PortalProps {
 }
 
 export const Portal: FC<PortalProps> = ({ children, isPortalDisabled }) => {
-  return !isPortalDisabled
+  const target = document.querySelector('#dialogs-root');
+
+  return isPortalDisabled
+    ? children
+    : target
     ? createPortal(children, document.querySelector('#dialogs-root'))
-    : children;
+    : null;
 };
