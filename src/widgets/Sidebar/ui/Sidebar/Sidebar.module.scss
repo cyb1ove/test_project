@@ -28,6 +28,10 @@
   right: 0;
 
   transform: translateX(50%);
+
+  & svg {
+    height: 14px;
+  }
 }
 
 .collapsed .collapsedBtn {

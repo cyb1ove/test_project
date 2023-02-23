@@ -10,8 +10,8 @@ describe('Test button', () => {
   });
 
   test('Check specific class', () => {
-    render(<Button theme={ThemeButton.CLEAR}>TEST</Button>);
-    expect(screen.getByText('TEST')).toHaveClass('clear');
+    render(<Button theme={ThemeButton.BACKGROUND}>TEST</Button>);
+    expect(screen.getByText('TEST')).toHaveClass('background');
     screen.debug();
   });
 });

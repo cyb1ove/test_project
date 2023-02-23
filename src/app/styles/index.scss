@@ -36,3 +36,28 @@
   bottom: 20px;
   right: 20px;
 }
+
+#dialogs-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font: var(--font-m);
+
+  pointer-events: none;
+
+  transition: background-color 0.5s;
+}
+
+#dialogs-root:has([class*='openned']) {
+  background-color: rgb(0 0 0 / 60%);
+
+  pointer-events: auto;
+}

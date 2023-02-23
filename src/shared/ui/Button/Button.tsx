@@ -4,9 +4,9 @@ import { ButtonHTMLAttributes, FC } from 'react';
 import classes from './Button.module.scss';
 
 export enum ThemeButton {
-  CLEAR = 'clear',
   OUTLINE = 'outline',
   BACKGROUND = 'background',
+  BACKGROUND_LIGHT = 'background-light',
 }
 
 export enum ButtonSize {
@@ -31,8 +31,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<ButtonProps> = ({
   children,
   className,
-  theme = ThemeButton.CLEAR,
-  rounded = false,
+  theme = ThemeButton.BACKGROUND,
+  rounded = ButtonRoundedTypes.PARTLY,
   size = ButtonSize.SMALL,
   squared,
   ...otherProps

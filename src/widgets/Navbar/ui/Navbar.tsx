@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { UserLogin } from 'features/UserLogin';
 import { FC } from 'react';
 
 import classes from './Navbar.module.scss';
@@ -8,5 +9,9 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
-  return <div className={clsx(classes.Navbar, className)}></div>;
+  return (
+    <div className={clsx(classes.Navbar, className)}>
+      <UserLogin />
+    </div>
+  );
 };

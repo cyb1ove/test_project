@@ -4,16 +4,16 @@
   --font-family-main: 'Mulish', sans-serif;
   --font-size-m: 18px;
   --font-line-m: 30px;
-  --font-m: bold var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
   --font-size-l: 24px;
   --font-line-l: 36px;
-  --font-l: bold var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
   --font-size-xl: 30px;
   --font-line-xl: 42px;
-  --font-xl: bold var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
   // Sizes
-  --navbar-height: 50px;
+  --navbar-height: 68px;
   --sidebar-width: 240px;
   --sidebar-width-collapsed: 90px;
   --button-border-radius: 6px;
@@ -21,6 +21,7 @@
   --sidebar-items-height: 50px;
   --sidebar-x-padding: 14px;
   --sidebar-y-padding: 10px;
+  --button-padding: 20px;
 
   // Transition
 

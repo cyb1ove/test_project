@@ -3,29 +3,15 @@
   justify-content: center;
   align-items: center;
 
-  margin: auto;
-  padding: 8px;
+  padding: 0 var(--button-padding);
 
   cursor: pointer;
 }
 
-.clear {
-  margin: 0;
-  padding: 0;
-
-  border: none;
-
-  background: none;
-
-  outline: none;
-}
-
 .outline {
-  padding: 15px;
+  color: var(--text-color);
 
-  color: var(--primary-color);
-
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--text-color);
 
   background: none;
 }
@@ -39,11 +25,17 @@
 }
 
 .full_rounded {
+  padding: 0;
+
   border-radius: 50%;
 }
 
 .partly_rounded {
   border-radius: var(--button-border-radius);
+}
+
+.squared {
+  padding: 0;
 }
 
 .squared * {

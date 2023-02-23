@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator';
 
-import { Button, ButtonSize, ThemeButton } from './Button';
+import { Button, ButtonRoundedTypes, ButtonSize, ThemeButton } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -11,17 +13,6 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  children: 'Text',
-};
-
-export const Clear = Template.bind({});
-Clear.args = {
-  children: 'Text',
-  theme: ThemeButton.CLEAR,
-};
 
 export const Outline = Template.bind({});
 Outline.args = {
@@ -35,30 +26,43 @@ Background.args = {
   theme: ThemeButton.BACKGROUND,
 };
 
+export const DarkBackground = Template.bind({});
+DarkBackground.args = {
+  children: 'Text',
+};
+DarkBackground.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const DarkOutline = Template.bind({});
+DarkOutline.args = {
+  children: 'Text',
+  theme: ThemeButton.OUTLINE,
+};
+DarkOutline.decorators = [ThemeDecorator(Theme.DARK)];
+
 export const Round = Template.bind({});
 Round.args = {
   children: '>',
   theme: ThemeButton.BACKGROUND,
-  rounded: true,
+  rounded: ButtonRoundedTypes.FULL,
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  children: '>',
+  children: 'Text',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.SMALL,
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
-  children: '>',
+  children: 'Text',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.MEDIUM,
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  children: '>',
+  children: 'Text',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.LARGE,
 };
