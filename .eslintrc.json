@@ -9,7 +9,7 @@
     "project": "./tsconfig.json",
     "ecmaFeatures": {
       "jsx": true,
-      "js": true,
+      "js": true
     },
     "ecmaVersion": "latest",
     "sourceType": "module"
