@@ -27,7 +27,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
   };
 
   return (
-    <nav
+    <aside
       data-testid="sidebar"
       className={clsx(classes.Sidebar, className, {
         [classes.collapsed]: collapsed,
@@ -65,6 +65,6 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       <div className={clsx(classes.switchers)}>
         <ThemeSwitcher className={classes.switcher} collapsed={collapsed} />
       </div>
-    </nav>
+    </aside>
   );
 };

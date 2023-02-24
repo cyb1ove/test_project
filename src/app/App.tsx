@@ -18,7 +18,10 @@ const App = () => {
         <Navbar />
 
         <div className="content-page">
-          <Sidebar />
+          <div className="sidebar-wrapper">
+            <Sidebar />
+          </div>
+
           <div className="page-wrapper">
             <AppRouter />
 
