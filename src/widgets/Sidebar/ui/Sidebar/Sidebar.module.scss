@@ -5,8 +5,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
+  min-width: var(--sidebar-width);
   padding: var(--sidebar-y-padding) var(--sidebar-x-padding);
 
   background: var(--sidebar-color);
