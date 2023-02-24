@@ -1,4 +1,7 @@
 .Navbar {
+  position: relative;
+  z-index: 2;
+
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -8,6 +11,8 @@
   padding: 0 var(--sidebar-x-padding);
 
   background: var(--sidebar-color);
+
+  box-shadow: 0 3px 5px var(--widgets-shadow-color);
 }
 
 .mainLink {

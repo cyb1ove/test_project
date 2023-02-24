@@ -32,26 +32,23 @@ export const Modal: FC<ModalProps> = ({
     }
   }, [onClose]);
 
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler();
-      }
-    },
-    [closeHandler]
-  );
-
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
   useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeHandler();
+      }
+    };
+
     document.addEventListener('keydown', onKeyDown);
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [isOpen, onKeyDown]);
+  }, [isOpen, closeHandler]);
 
   return (
     <Portal isPortalDisabled={isPortalDisabled}>

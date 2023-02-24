@@ -11,7 +11,21 @@
 
   background: var(--sidebar-color);
 
+  box-shadow: 3px 0 5px var(--widgets-shadow-color);
+
   transition: width 0.4s;
+
+  & .collapsedBtn {
+    position: absolute;
+    bottom: 100px;
+    right: 0;
+
+    transform: translateX(50%);
+
+    & svg {
+      height: 14px;
+    }
+  }
 }
 
 .collapsed {
@@ -20,18 +34,6 @@
 
 .vertical {
   flex-direction: column;
-}
-
-.collapsedBtn {
-  position: absolute;
-  bottom: 100px;
-  right: 0;
-
-  transform: translateX(50%);
-
-  & svg {
-    height: 14px;
-  }
 }
 
 .collapsed .collapsedBtn {

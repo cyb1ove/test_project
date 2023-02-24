@@ -1,3 +1,17 @@
 .LanguageSwitcher {
+  position: relative;
+
+  line-height: 0;
+
+  box-shadow: 0 0 4px var(--widgets-shadow-color);
+
   cursor: pointer;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+  }
 }
