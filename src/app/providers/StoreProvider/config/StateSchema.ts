@@ -1,1 +1,5 @@
-// export interface StateSchema {}
+import { UserSchema } from 'entities/User/model';
+
+export interface StateSchema {
+  user: UserSchema;
+}
