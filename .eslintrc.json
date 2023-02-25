@@ -6,7 +6,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    // "project": "./tsconfig.json",
+    "project": "./tsconfig.json",
     "ecmaFeatures": {
       "jsx": true,
       "js": true
@@ -122,5 +122,8 @@
         "i18next/no-literal-string": "off"
       }
     }
+  ],
+  "ignorePatterns": [
+    "**/json-server/index.js"
   ]
 }
