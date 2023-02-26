@@ -15,12 +15,12 @@ const App = () => {
   return (
     <div className={clsx('app', theme)}>
       <Suspense fallback="">
-        <Navbar />
+        <div className="sidebar-wrapper">
+          <Sidebar />
+        </div>
 
         <div className="content-page">
-          <div className="sidebar-wrapper">
-            <Sidebar />
-          </div>
+          <Navbar />
 
           <div className="page-wrapper">
             <AppRouter />

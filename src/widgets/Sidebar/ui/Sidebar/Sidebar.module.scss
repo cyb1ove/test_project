@@ -6,12 +6,10 @@
   justify-content: space-between;
 
   width: var(--sidebar-width);
-  height: calc(100vh - var(--navbar-height));
-  padding: var(--sidebar-y-padding) var(--sidebar-x-padding);
+  height: 100vh;
+  padding: var(--global-margin) var(--sidebar-x-padding);
 
   background: var(--sidebar-color);
-
-  box-shadow: 1px 0 15px var(--widgets-shadow-color);
 
   transition: width 0.4s;
 
@@ -43,6 +41,7 @@
 .items {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .item {
@@ -50,7 +49,6 @@
   align-items: center;
 
   height: var(--sidebar-items-height);
-  margin-top: 10px;
 
   border-radius: var(--button-border-radius);
 

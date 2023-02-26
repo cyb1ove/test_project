@@ -6,13 +6,13 @@
   flex-direction: row-reverse;
   align-items: center;
 
-  width: 100%;
   height: var(--navbar-height);
+  max-width: 100%;
   padding: 0 var(--sidebar-x-padding);
 
-  background: var(--sidebar-color);
+  background: var(--navbar-color);
 
-  box-shadow: 0 2px 2px var(--widgets-shadow-color);
+  opacity: 0.7;
 }
 
 .login_button {
