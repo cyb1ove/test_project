@@ -3,15 +3,15 @@ import { createPortal } from 'react-dom';
 
 interface PortalProps {
   children: ReactElement;
-  isPortalDisabled?: boolean;
+  isDisabled?: boolean;
 }
 
-export const Portal: FC<PortalProps> = ({ children, isPortalDisabled }) => {
+export const Portal: FC<PortalProps> = ({ children, isDisabled }) => {
   const target = document.querySelector('#dialogs-root');
 
-  return isPortalDisabled
-    ? children
-    : target
-    ? createPortal(children, document.querySelector('#dialogs-root'))
-    : null;
+  if (isDisabled || !target) {
+    return children;
+  }
+
+  return createPortal(children, target);
 };

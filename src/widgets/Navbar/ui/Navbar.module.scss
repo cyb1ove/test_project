@@ -15,10 +15,23 @@
   box-shadow: 0 2px 2px var(--widgets-shadow-color);
 }
 
+.login_button {
+  width: 100px;
+  height: var(--sidebar-items-height);
+
+  font-size: var(--font-size-m);
+}
+
 .mainLink {
   margin-right: 15px;
 }
 
 .links {
   margin-left: auto;
+}
+
+div.login_modal {
+  width: 280px;
+
+  border-radius: var(--button-border-radius);
 }

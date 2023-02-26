@@ -1,4 +1,6 @@
 .Modal {
+  z-index: 100;
+
   max-width: 30%;
   padding: 20px;
 
@@ -6,7 +8,7 @@
 
   border-radius: 12px;
 
-  background-color: var(--bg-color);
+  background-color: var(--sidebar-color);
 
   opacity: 0;
 
@@ -22,6 +24,32 @@
   height: 100%;
 }
 
-.openned {
+.openned .Modal {
   opacity: 1;
+
+  animation: open-modal var(--time-animations) ease-in-out;
+}
+
+.closing .Modal {
+  animation: close-modal var(--time-animations) ease-in-out;
+}
+
+@keyframes open-modal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes close-modal {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

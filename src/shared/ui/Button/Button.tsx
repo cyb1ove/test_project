@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, FC, forwardRef } from 'react';
 
 import classes from './Button.module.scss';
 
@@ -28,25 +28,36 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   squared?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({
-  children,
-  className,
-  theme = ThemeButton.BACKGROUND,
-  rounded = ButtonRoundedTypes.PARTLY,
-  size = ButtonSize.SMALL,
-  squared,
-  ...otherProps
-}) => {
-  const mods = [
-    classes[theme],
-    classes[size],
-    rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
-    { [classes.squared]: squared },
-  ];
+type Ref = HTMLButtonElement;
 
-  return (
-    <button className={clsx(classes.Button, className, mods)} {...otherProps}>
-      {children}
-    </button>
-  );
-};
+export const Button = forwardRef<Ref, ButtonProps>(
+  (
+    {
+      children,
+      className,
+      theme = ThemeButton.BACKGROUND,
+      rounded = ButtonRoundedTypes.PARTLY,
+      size = ButtonSize.SMALL,
+      squared,
+      ...otherProps
+    },
+    ref
+  ) => {
+    const mods = [
+      classes[theme],
+      classes[size],
+      rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
+      { [classes.squared]: squared },
+    ];
+
+    return (
+      <button
+        ref={ref}
+        className={clsx(classes.Button, className, mods)}
+        {...otherProps}
+      >
+        {children}
+      </button>
+    );
+  }
+);

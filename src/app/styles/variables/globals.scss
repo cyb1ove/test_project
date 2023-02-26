@@ -3,6 +3,8 @@
 :root {
   --font-family-main: 'Mulish', sans-serif;
   --font-size-s: 14px;
+  --font-line-s: 24px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
   --font-size-m: 18px;
   --font-line-m: 28px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -19,7 +21,9 @@
   --sidebar-width-collapsed: 90px;
   --button-border-radius: 6px;
   --sidebar-images-space: 60px;
+  --input-images-space: 40px;
   --sidebar-items-height: 50px;
+  --input-height: 40px;
   --sidebar-x-padding: 14px;
   --sidebar-y-padding: 10px;
   --button-padding: 20px;
@@ -30,4 +34,5 @@
   --tran-03: all 0.3s ease;
   --tran-04: all 0.4s ease;
   --tran-05: all 0.5s ease;
+  --time-animations: 0.2s;
 }

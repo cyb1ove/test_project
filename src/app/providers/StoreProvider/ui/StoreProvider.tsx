@@ -5,14 +5,14 @@ import { StateSchema } from '../config/StateSchema';
 import { createReduxStore } from '../config/store';
 
 interface StoreProviderProps {
-  childred?: ReactNode;
+  children: ReactNode;
   initialState?: StateSchema;
 }
 
 export const StoreProvider: FC<StoreProviderProps> = ({
-  childred,
+  children,
   initialState,
 }) => {
   const store = createReduxStore(initialState);
-  return <Provider store={store}>{childred}</Provider>;
+  return <Provider store={store}>{children}</Provider>;
 };

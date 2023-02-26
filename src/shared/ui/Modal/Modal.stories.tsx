@@ -22,7 +22,7 @@ Light.args = {
   isOpen: true,
   children:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ipsam Illum consequuntur sequi quasi similique voluptatibus sit in quaerat ex, cupiditate molestiae! Odio consequuntur fugiat aut beatae mollitia veritatis voluptas?',
-  isPortalDisabled: true,
+  isDisabled: true,
 };
 Light.decorators = [ThemeDecorator(Theme.LIGHT)];
 
@@ -31,6 +31,6 @@ Dark.args = {
   isOpen: true,
   children:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ipsam Illum consequuntur sequi quasi similique voluptatibus sit in quaerat ex, cupiditate molestiae! Odio consequuntur fugiat aut beatae mollitia veritatis voluptas?',
-  isPortalDisabled: true,
+  isDisabled: true,
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

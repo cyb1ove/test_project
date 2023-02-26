@@ -1,5 +1,12 @@
 import { clsx } from 'clsx';
-import { FC, ReactNode, useCallback, useEffect } from 'react';
+import {
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useTheme } from 'shared/hooks/useTheme';
 
 import { Portal } from '../Portal/Portal';
@@ -10,56 +17,69 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
-  isPortalDisabled?: boolean;
+  isDisabled?: boolean;
 }
 
-export const Modal: FC<ModalProps> = ({
-  className,
-  children,
-  isOpen,
-  onClose,
-  isPortalDisabled,
-}) => {
-  const { theme } = useTheme();
+type Ref = HTMLDivElement;
 
-  const mods: Record<string, boolean> = {
-    [classes.openned]: isOpen,
-  };
+export const Modal = forwardRef<Ref, ModalProps>(
+  ({ className, children, isOpen, onClose, isDisabled, ...rest }, ref) => {
+    const { theme } = useTheme();
+    const [isClosing, setIsClosing] = useState(false);
+    const timeoutRef = useRef(null);
 
-  const closeHandler = useCallback(() => {
-    if (onClose) {
-      onClose();
+    const mods: Record<string, boolean> = {
+      [classes.openned]: isOpen,
+      [classes.closing]: isClosing,
+    };
+
+    const onCloseModal = useCallback(() => {
+      setIsClosing(true);
+
+      timeoutRef.current = setTimeout(() => {
+        setIsClosing(false);
+        onClose?.();
+      }, 100);
+    }, [onClose]);
+
+    const onContentClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+    };
+
+    useEffect(() => {
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onCloseModal();
+        }
+      };
+
+      document.addEventListener('keydown', onKeyDown);
+
+      return () => {
+        document.removeEventListener('keydown', onKeyDown);
+      };
+    }, [isOpen, onCloseModal]);
+
+    if (!isOpen) {
+      return null;
     }
-  }, [onClose]);
 
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler();
-      }
-    };
-
-    document.addEventListener('keydown', onKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isOpen, closeHandler]);
-
-  return (
-    <Portal isPortalDisabled={isPortalDisabled}>
-      <div className={clsx(classes.wrapper, theme)} onClick={closeHandler}>
+    return (
+      <Portal isDisabled={isDisabled}>
         <div
-          className={clsx(classes.Modal, className, mods)}
-          onClick={onContentClick}
+          className={clsx(classes.wrapper, theme, mods)}
+          onClick={onCloseModal}
         >
-          {children}
+          <div
+            className={clsx(className, classes.Modal)}
+            onClick={onContentClick}
+            ref={ref}
+            {...rest}
+          >
+            {children}
+          </div>
         </div>
-      </div>
-    </Portal>
-  );
-};
+      </Portal>
+    );
+  }
+);
