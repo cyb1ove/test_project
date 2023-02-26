@@ -71,6 +71,7 @@ export const Modal = forwardRef<Ref, ModalProps>(
           onClick={onCloseModal}
         >
           <div
+            data-testid="modal"
             className={clsx(className, classes.Modal)}
             onClick={onContentClick}
             ref={ref}
