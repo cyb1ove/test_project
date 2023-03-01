@@ -69,6 +69,7 @@ export const Modal = forwardRef<Ref, ModalProps>(
         <div
           className={clsx(classes.wrapper, theme, mods)}
           onClick={onCloseModal}
+          role="dialog"
         >
           <div
             data-testid="modal"

@@ -5,5 +5,11 @@
   "Произошла непредвиденная ошибка": "Unexpected error occurred",
   "Тёмная": "Dark",
   "Светлая": "Light",
-  "Войти": "Log in"
+  "Войти": "Log in",
+  "Выйти": "Log out",
+  "Форма авторизации": "Login form",
+  "Имя пользователя": "User name",
+  "Пароль": "Password",
+  "Имя пользователя обязательно": "User name is required",
+  "Пароль обязателен": "Password is required"
 }

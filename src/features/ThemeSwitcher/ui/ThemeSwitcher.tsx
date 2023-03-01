@@ -1,5 +1,5 @@
 import { Theme } from 'app/providers/ThemeProvider';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Switch from 'react-switch';
@@ -24,7 +24,6 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
 
   const mods = [{ [classes.collapsed]: collapsed }];
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   const handleChange = (checked: boolean) => {
     toggleTheme();
     setChecked(checked);

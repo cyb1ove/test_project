@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { SidebarDecorator } from 'widgets/Sidebar/ui/Sidebar/SidebarDecorator';
 
 import { ThemeSwitcher } from './ThemeSwitcher';

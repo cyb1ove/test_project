@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
+import { ButtonLoader } from '../ButtonLoader/ButtonLoader';
 import classes from './Button.module.scss';
 
 export enum ThemeButton {
@@ -26,6 +27,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: ButtonRoundedTypes;
   size?: ButtonSize;
   squared?: boolean;
+  pending?: boolean;
 }
 
 type Ref = HTMLButtonElement;
@@ -39,6 +41,7 @@ export const Button = forwardRef<Ref, ButtonProps>(
       rounded = ButtonRoundedTypes.PARTLY,
       size = ButtonSize.SMALL,
       squared,
+      pending,
       ...otherProps
     },
     ref
@@ -56,7 +59,10 @@ export const Button = forwardRef<Ref, ButtonProps>(
         className={clsx(classes.Button, className, mods)}
         {...otherProps}
       >
-        {children}
+        {pending && <ButtonLoader className={classes.loader} />}
+        <span className={clsx({ [classes.text_hidden]: pending })}>
+          {children}
+        </span>
       </button>
     );
   }

@@ -6,6 +6,7 @@
   flex-direction: row-reverse;
   align-items: center;
 
+  width: 100%;
   height: var(--navbar-height);
   max-width: 100%;
   padding: 0 var(--sidebar-x-padding);
@@ -16,7 +17,7 @@
 }
 
 .login_button {
-  width: 100px;
+  width: 106px;
   height: var(--sidebar-items-height);
 
   font-size: var(--font-size-m);

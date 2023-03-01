@@ -1,4 +1,6 @@
 .Button {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,6 +75,10 @@
   }
 }
 
+.text_hidden {
+  visibility: hidden;
+}
+
 .background {
   color: var(--background-text-color);
 
@@ -126,4 +132,10 @@
   &.squared {
     width: var(--font-line-xl);
   }
+}
+
+.loader {
+  position: absolute;
+
+  transform: scale(0.5);
 }

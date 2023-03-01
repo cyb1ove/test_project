@@ -1,8 +1,8 @@
 import { addDecorator } from '@storybook/react'
-import { StyleDecorator } from '../../src/shared/config/decorators/StyleDecorator';
-import { ThemeDecorator } from '../../src/shared/config/decorators/ThemeDecorator';
-import { RouterDecorator } from '../../src/shared/config/decorators/RouterDecorator';
-import { I18nDecorator } from '../../src/shared/config/decorators/I18nDecorator';
+import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
+import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator';
+import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
+import { I18nDecorator } from '../../src/shared/config/storybook/I18nDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider';
 
 export const parameters = {

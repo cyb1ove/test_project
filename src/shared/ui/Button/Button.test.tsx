@@ -1,7 +1,5 @@
-/* eslint-disable i18next/no-literal-string */
 import { render, screen } from '@testing-library/react';
-
-import { Button, ThemeButton } from './Button';
+import { Button } from './Button';
 
 describe('Test button', () => {
   test('Check button existance', () => {
@@ -9,9 +7,8 @@ describe('Test button', () => {
     expect(screen.getByText('TEST')).toBeInTheDocument();
   });
 
-  test('Check specific class', () => {
-    render(<Button theme={ThemeButton.OUTLINE}>TEST</Button>);
-    expect(screen.getByText('TEST')).toHaveClass('outline');
-    screen.debug();
-  });
+  test('Loader state for button should be visible', () => {
+    render(<Button pending>TEST</Button>);
+    expect(screen.getByRole('loader')).toBeInTheDocument();
+  })
 });

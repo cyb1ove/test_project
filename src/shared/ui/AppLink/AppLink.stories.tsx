@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import HomeIcon from 'shared/assets/icons/home.svg';
-import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { SidebarDecorator } from 'widgets/Sidebar/ui/Sidebar/SidebarDecorator';
 
 import { AppLink, AppLinkTheme } from './AppLink';
