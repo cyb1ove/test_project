@@ -1,4 +1,6 @@
+/* eslint-disable i18next/no-literal-string */
 import { render, screen } from '@testing-library/react';
+
 import { Button } from './Button';
 
 describe('Test button', () => {
@@ -10,5 +12,5 @@ describe('Test button', () => {
   test('Loader state for button should be visible', () => {
     render(<Button pending>TEST</Button>);
     expect(screen.getByRole('loader')).toBeInTheDocument();
-  })
+  });
 });

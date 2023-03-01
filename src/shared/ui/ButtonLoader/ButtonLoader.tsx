@@ -8,5 +8,7 @@ interface ButtonLoaderProps {
 }
 
 export const ButtonLoader: FC<ButtonLoaderProps> = ({ className }) => {
-  return <div className={clsx(classes.ButtonLoader, className)} role="loader"></div>;
+  return (
+    <div className={clsx(classes.ButtonLoader, className)} role="loader"></div>
+  );
 };
