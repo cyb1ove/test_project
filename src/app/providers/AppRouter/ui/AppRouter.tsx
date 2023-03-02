@@ -3,7 +3,7 @@ import { PageError } from 'pages/PageError';
 import { Suspense, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { Loader } from 'shared/ui/PageLoader/Loader';
+import { Loader } from 'shared/ui/Loader/Loader';
 
 export const AppRouter = () => {
   const { error } = useContext(ErrorContext);

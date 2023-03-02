@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { FC } from 'react';
 
-import classes from './PageLoader.module.scss';
+import classes from './Loader.module.scss';
 
 interface PageLoaderProps {
   className?: string;
