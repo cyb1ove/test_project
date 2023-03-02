@@ -1,16 +1,20 @@
 import { clsx } from 'clsx';
-import { selectLoginForm } from 'features/AuthByUsername/model/selectors/selectLoginForm';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import { selectError } from 'features/AuthByUsername/model/selectors/selectError';
 import { Formik } from 'formik';
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDynamicModuleLoader } from 'shared/hooks/useDynamicModuleLoader';
 import { Button, ButtonSize } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { useDebouncedCallback } from 'use-debounce';
 import * as yup from 'yup';
 
-import { loginActions } from '../../model/slice/loginSlice';
+import { selectIsLoading } from '../../model/selectors/selectIsLoading';
+import { selectPassword } from '../../model/selectors/selectPassword';
+import { selectUsername } from '../../model/selectors/selectUsername';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import classes from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -25,13 +29,14 @@ const userSchema = yup.object().shape({
 const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation();
 
-  const {
-    username,
-    password,
-    error: serverError,
-    isLoading,
-  } = useSelector(selectLoginForm);
+  const username = useSelector(selectUsername);
+  const password = useSelector(selectPassword);
+  const serverError = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+
   const dispatch = useDispatch();
+
+  useDynamicModuleLoader({ loginForm: loginReducer });
 
   const updateValFromStore = useDebouncedCallback((key, value) => {
     dispatch(loginActions.updateField({ key, value }));
