@@ -1,8 +1,10 @@
 import { clsx } from 'clsx';
 import { forwardRef, Suspense } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
+import { Loader } from 'shared/ui/PageLoader/Loader';
 
-import LoginForm from '../LoginForm/LoginForm';
+// import LoginForm from '../LoginForm/LoginForm';
+import LoginFormAsync from '../LoginForm/LoginForm.async';
 import classes from './LoginModal.module.scss';
 
 export interface LoginModalProps {
@@ -23,8 +25,8 @@ export const LoginModal = forwardRef<Ref, LoginModalProps>(
         ref={ref}
         {...rest}
       >
-        <Suspense>
-          <LoginForm />
+        <Suspense fallback={<Loader />}>
+          <LoginFormAsync />
         </Suspense>
       </Modal>
     );
