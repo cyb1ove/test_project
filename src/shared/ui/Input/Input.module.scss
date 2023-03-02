@@ -53,6 +53,9 @@ input {
 
   color: var(--anxiety-color);
   font: var(--font-s);
+  white-space: pre;
+
+  overflow: hidden;
 }
 
 input:focus + .error_text {
