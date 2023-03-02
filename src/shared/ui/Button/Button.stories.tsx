@@ -71,6 +71,6 @@ export const Squared = Template.bind({});
 Squared.args = {
   children: 'RU',
   theme: ThemeButton.BACKGROUND,
-  size: ButtonSize.LARGE,
+  size: ButtonSize.MEDIUM,
   squared: true,
 };

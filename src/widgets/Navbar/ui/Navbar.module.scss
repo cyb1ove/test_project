@@ -4,23 +4,16 @@
 
   display: flex;
   flex-direction: row-reverse;
-  align-items: center;
+  align-items: stretch;
 
   width: 100%;
   height: var(--navbar-height);
   max-width: 100%;
-  padding: 0 var(--sidebar-x-padding);
+  padding: var(--navbar-padding) var(--sidebar-x-padding);
 
-  background: var(--navbar-color);
+  background-color: var(--navbar-color);
 
   opacity: 0.7;
-}
-
-.login_button {
-  width: 106px;
-  height: var(--sidebar-items-height);
-
-  font-size: var(--font-size-m);
 }
 
 .mainLink {
@@ -29,10 +22,4 @@
 
 .links {
   margin-left: auto;
-}
-
-div.login_modal {
-  width: 280px;
-
-  border-radius: var(--button-border-radius);
 }

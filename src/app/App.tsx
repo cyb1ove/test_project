@@ -27,10 +27,16 @@ const App = () => {
         </div>
 
         <div className="content-page">
-          <Navbar />
+          <div className="navbar-wrapper">
+            <div className="container">
+              <Navbar />
+            </div>
+          </div>
 
           <div className="page-wrapper">
-            <AppRouter />
+            <div className="container">
+              <AppRouter />
+            </div>
 
             <div className="float-container">
               <LanguageSwitcher />

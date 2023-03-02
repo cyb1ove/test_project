@@ -5,7 +5,7 @@ import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 
 import classes from './Navbar.module.scss';
 
@@ -53,6 +53,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
       <Button
         className={clsx(classes.login_button)}
         theme={ThemeButton.OUTLINE}
+        size={ButtonSize.MEDIUM}
         ref={setTriggerRef}
         data-testid="login-button"
       >

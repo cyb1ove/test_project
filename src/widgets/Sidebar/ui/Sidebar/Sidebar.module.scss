@@ -11,6 +11,8 @@
 
   background: var(--sidebar-color);
 
+  box-shadow: 1px 0 6px var(--widgets-shadow-color);
+
   transition: width 0.4s;
 
   & .collapsedBtn {

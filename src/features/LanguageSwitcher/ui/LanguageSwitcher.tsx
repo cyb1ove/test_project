@@ -29,7 +29,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
       className={clsx(classes.LanguageSwitcher, className)}
       onClick={toggle}
       rounded={ButtonRoundedTypes.PARTLY}
-      size={ButtonSize.LARGE}
+      size={ButtonSize.MEDIUM}
       squared
     >
       <span>{i18n.language}</span>

@@ -39,7 +39,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         className={classes.collapsedBtn}
         theme={ThemeButton.BACKGROUND}
         rounded={ButtonRoundedTypes.FULL}
-        size={ButtonSize.MEDIUM}
+        size={ButtonSize.SMALL}
+        squared
       >
         <ShevronIcon />
       </Button>

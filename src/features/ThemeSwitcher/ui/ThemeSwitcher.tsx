@@ -48,10 +48,10 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
           offColor="#ddd"
           onColor="#fff"
           onHandleColor="#000"
-          handleDiameter={16}
+          handleDiameter={10}
           uncheckedIcon={false}
-          height={24}
-          width={44}
+          height={20}
+          width={38}
         />
       </div>
     </div>

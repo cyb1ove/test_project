@@ -36,10 +36,21 @@
   padding: 20px;
 }
 
+.navbar-wrapper {
+  background-color: var(--navbar-color);
+}
+
 .float-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+
+.container {
+  position: relative;
+
+  max-width: 1200px;
+  margin: auto;
 }
 
 #dialogs-root {
@@ -53,6 +64,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: var(--sidebar-x-padding);
 
   font: var(--font-m);
 
