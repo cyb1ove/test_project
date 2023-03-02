@@ -1,11 +1,11 @@
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import { forwardRef, Suspense } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
 
-import { LoginForm } from '../LoginForm/LoginForm';
+import LoginForm from '../LoginForm/LoginForm';
 import classes from './LoginModal.module.scss';
 
-interface LoginModalProps {
+export interface LoginModalProps {
   className?: string;
   isOpen: boolean;
   onClose?: () => void;
@@ -23,7 +23,9 @@ export const LoginModal = forwardRef<Ref, LoginModalProps>(
         ref={ref}
         {...rest}
       >
-        <LoginForm />
+        <Suspense>
+          <LoginForm />
+        </Suspense>
       </Modal>
     );
   }

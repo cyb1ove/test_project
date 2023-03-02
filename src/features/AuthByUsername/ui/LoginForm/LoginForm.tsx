@@ -22,7 +22,7 @@ const userSchema = yup.object().shape({
   password: yup.string().required('Пароль обязателен'),
 });
 
-export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
+const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation();
 
   const {
@@ -99,3 +99,5 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     </Formik>
   );
 });
+
+export default LoginForm;
