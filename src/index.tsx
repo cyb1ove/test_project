@@ -11,15 +11,15 @@ import App from './app/App';
 
 render(
   <React.StrictMode>
-    <StoreProvider>
-      <ErrorBoundary>
-        <BrowserRouter>
+    <BrowserRouter>
+      <StoreProvider>
+        <ErrorBoundary>
           <ThemeProvider>
             <App />
           </ThemeProvider>
-        </BrowserRouter>
-      </ErrorBoundary>
-    </StoreProvider>
+        </ErrorBoundary>
+      </StoreProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.querySelector('#root')
 );

@@ -16,4 +16,5 @@ declare module '*.svg' {
   export default SVG;
 }
 declare const IS_DEV: boolean;
+declare const API: string;
 declare module 'clsx';

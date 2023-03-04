@@ -114,6 +114,10 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error"
   },
+  "globals": {
+    "IS_DEV": true,
+    "API": true,
+  },
   "overrides": [
     {
       "files": [
