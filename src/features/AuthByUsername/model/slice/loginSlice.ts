@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { loginByUsername } from '../services/loginByUsername/loginByUsername';
+import {
+  loginByUsername,
+  LoginByUsernameProps,
+} from '../services/loginByUsername/loginByUsername';
 import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
@@ -10,7 +13,7 @@ const initialState: LoginSchema = {
 };
 
 type UpdatePayloadType = {
-  key: 'username' | 'password';
+  key: keyof LoginByUsernameProps;
   value: string;
 };
 

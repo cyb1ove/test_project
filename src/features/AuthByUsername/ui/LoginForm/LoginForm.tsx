@@ -1,20 +1,18 @@
-import { clsx } from 'clsx';
 import { selectLoginError } from 'features/AuthByUsername/model/selectors/selectLoginError/selectLoginError';
 import { Formik } from 'formik';
 import { FC, memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDynamicModuleLoader } from 'shared/hooks/useDynamicModuleLoader';
-import { Button, ButtonSize } from 'shared/ui/Button/Button';
+import { Form } from 'shared/ui/Form/Form';
 import { Input } from 'shared/ui/Input/Input';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useDebouncedCallback } from 'use-debounce';
-import * as yup from 'yup';
 
-import { selectLoginPassword } from '../../model/selectors/selecLoginPassword.ts/selectLoginPassword';
+import { userSchema } from '../../config/schema';
 import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/selectLoginIsLoading';
-import { selectLoginUsername } from '../../model/selectors/selectLoginUsername/selectLoginUsername';
-import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import {
+  loginByUsername,
+  LoginByUsernameProps,
+} from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import classes from './LoginForm.module.scss';
 
@@ -22,16 +20,16 @@ interface LoginFormProps {
   className?: string;
 }
 
-const userSchema = yup.object().shape({
-  username: yup.string().required('Имя пользователя обязателен'),
-  password: yup.string().required('Пароль обязателен'),
-});
+type Fields = {
+  [key in keyof LoginByUsernameProps]: string;
+};
 
-const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
-  const { t } = useTranslation();
+const fields: Fields = {
+  username: 'text',
+  password: 'password',
+};
 
-  const username = useSelector(selectLoginUsername);
-  const password = useSelector(selectLoginPassword);
+const LoginForm: FC<LoginFormProps> = memo(() => {
   const serverError = useSelector(selectLoginError);
   const isLoading = useSelector(selectLoginIsLoading);
 
@@ -46,8 +44,8 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   return (
     <Formik
       initialValues={{
-        username,
-        password,
+        username: '',
+        password: '',
       }}
       validationSchema={userSchema}
       onSubmit={(values) => {
@@ -56,58 +54,30 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     >
       {({ handleSubmit, handleChange, isValid, errors, values }) => {
         return (
-          <form
+          <Form
+            className={classes.loginForm}
+            title="Форма авторизации"
+            error={serverError}
             onSubmit={handleSubmit}
-            className={clsx(classes.LoginForm, className)}
+            isValid={isValid}
+            isLoading={isLoading}
           >
-            <div>
-              <h1>{t('Форма авторизации')}</h1>
-
-              <Text
-                theme={TextTheme.ERROR}
-                text={serverError}
-                className={classes.error}
-              />
-            </div>
-
-            <Input
-              name="username"
-              type="text"
-              role="login"
-              className={classes.login}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                handleChange(event);
-                updateValFromStore('username', event.target.value);
-              }}
-              placeholder={t('Имя пользователя')}
-              value={values.username}
-              error={errors.username}
-            />
-
-            <Input
-              name="password"
-              type="password"
-              role="password"
-              className={classes.password}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                handleChange(event);
-                updateValFromStore('password', event.target.value);
-              }}
-              placeholder={t('Пароль')}
-              value={values.password}
-              error={errors.password}
-            />
-
-            <Button
-              type="submit"
-              className={classes.loginBtn}
-              disabled={!isValid}
-              size={ButtonSize.MEDIUM}
-              pending={isLoading}
-            >
-              {t('Войти')}
-            </Button>
-          </form>
+            {Object.entries(fields).map(
+              ([name, type]: [keyof LoginByUsernameProps, string]) => (
+                <Input
+                  name={name}
+                  type={type}
+                  className={classes[name]}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    handleChange(event);
+                    updateValFromStore(name, event.target.value);
+                  }}
+                  value={values[name]}
+                  error={errors[name]}
+                />
+              )
+            )}
+          </Form>
         );
       }}
     </Formik>

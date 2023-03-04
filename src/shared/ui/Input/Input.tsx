@@ -6,7 +6,7 @@ import classes from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> & {
   icon?: ReactElement;
-  error: string;
+  error?: string;
 };
 
 interface InputProps extends HTMLInputProps {

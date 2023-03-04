@@ -1,0 +1,17 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  width: 18em;
+}
+
+.loginBtn {
+  align-self: flex-end;
+}
+
+.error {
+  height: 1em;
+
+  text-align: center;
+}
