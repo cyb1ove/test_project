@@ -28,6 +28,6 @@ export const loginByUsername = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('You wrote incorrect username or password');
+    return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });

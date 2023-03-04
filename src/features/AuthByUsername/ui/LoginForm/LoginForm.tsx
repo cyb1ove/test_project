@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDynamicModuleLoader } from 'shared/hooks/useDynamicModuleLoader';
 import { Button, ButtonSize } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useDebouncedCallback } from 'use-debounce';
 import * as yup from 'yup';
 
@@ -36,7 +37,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
 
   const dispatch = useDispatch();
 
-  useDynamicModuleLoader({ loginForm: loginReducer });
+  useDynamicModuleLoader({ loginForm: loginReducer }, true);
 
   const updateValFromStore = useDebouncedCallback((key, value) => {
     dispatch(loginActions.updateField({ key, value }));
@@ -59,7 +60,15 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
             onSubmit={handleSubmit}
             className={clsx(classes.LoginForm, className)}
           >
-            <h1>{t('Форма авторизации')}</h1>
+            <div>
+              <h1>{t('Форма авторизации')}</h1>
+
+              <Text
+                theme={TextTheme.ERROR}
+                text={serverError}
+                className={classes.error}
+              />
+            </div>
 
             <Input
               name="username"
@@ -72,7 +81,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
               }}
               placeholder={t('Имя пользователя')}
               value={values.username}
-              error={serverError || errors.username}
+              error={errors.username}
             />
 
             <Input
@@ -86,7 +95,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
               }}
               placeholder={t('Пароль')}
               value={values.password}
-              error={serverError || errors.password}
+              error={errors.password}
             />
 
             <Button

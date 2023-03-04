@@ -8,9 +8,13 @@ import { userReducer } from 'entities/User/model';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './StateSchema';
 
-export function createReduxStore(initialState?: DeepPartial<StateSchema>) {
+export function createReduxStore(
+  initialState?: DeepPartial<StateSchema>,
+  asyncReducers?: ReducersMapObject<StateSchema>
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
+    ...asyncReducers,
   };
 
   const reducerManager = createReducerManager(rootReducers);
