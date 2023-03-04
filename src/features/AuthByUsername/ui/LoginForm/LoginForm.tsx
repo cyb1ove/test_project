@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { selectError } from 'features/AuthByUsername/model/selectors/selectError';
+import { selectLoginError } from 'features/AuthByUsername/model/selectors/selectLoginError/selectLoginError';
 import { Formik } from 'formik';
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,9 +11,9 @@ import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useDebouncedCallback } from 'use-debounce';
 import * as yup from 'yup';
 
-import { selectIsLoading } from '../../model/selectors/selectIsLoading';
-import { selectPassword } from '../../model/selectors/selectPassword';
-import { selectUsername } from '../../model/selectors/selectUsername';
+import { selectLoginPassword } from '../../model/selectors/selecLoginPassword.ts/selectLoginPassword';
+import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/selectLoginIsLoading';
+import { selectLoginUsername } from '../../model/selectors/selectLoginUsername/selectLoginUsername';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import classes from './LoginForm.module.scss';
@@ -30,10 +30,10 @@ const userSchema = yup.object().shape({
 const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation();
 
-  const username = useSelector(selectUsername);
-  const password = useSelector(selectPassword);
-  const serverError = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
+  const username = useSelector(selectLoginUsername);
+  const password = useSelector(selectLoginPassword);
+  const serverError = useSelector(selectLoginError);
+  const isLoading = useSelector(selectLoginIsLoading);
 
   const dispatch = useDispatch();
 

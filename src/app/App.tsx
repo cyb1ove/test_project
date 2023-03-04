@@ -1,7 +1,7 @@
 import './styles/index.scss';
 
 import clsx from 'clsx';
-import { userActions } from 'entities/User/model';
+import { userActions } from 'entities/User';
 import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';

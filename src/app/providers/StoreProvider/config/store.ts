@@ -3,7 +3,7 @@ import {
   DeepPartial,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { userReducer } from 'entities/User/model';
+import { userReducer } from 'entities/User';
 
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './StateSchema';

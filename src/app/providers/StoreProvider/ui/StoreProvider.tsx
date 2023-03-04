@@ -1,5 +1,4 @@
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
-import { State } from '@storybook/api';
 import { FC, ReactNode } from 'react';
 import { Provider } from 'react-redux';
 

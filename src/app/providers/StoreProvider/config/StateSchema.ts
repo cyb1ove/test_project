@@ -5,7 +5,7 @@ import {
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { UserSchema } from 'entities/User/model';
+import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 
 export interface StateSchema {

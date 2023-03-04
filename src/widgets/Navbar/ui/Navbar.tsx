@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { getUserAuthData, userActions } from 'entities/User/model';
+import { getUserAuthData, userActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
 import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
