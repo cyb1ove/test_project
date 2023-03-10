@@ -1,0 +1,30 @@
+.contentPage {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.pageWrapper {
+  flex-grow: 1;
+
+  padding: 20px;
+}
+
+.navbarWrapper {
+  background-color: var(--navbar-color);
+}
+
+.floatContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.container {
+  position: relative;
+
+  height: 100%;
+  max-width: var(--container-width);
+  margin: auto;
+}

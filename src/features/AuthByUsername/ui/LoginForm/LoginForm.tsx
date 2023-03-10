@@ -29,7 +29,7 @@ const fields: Fields = {
   password: 'password',
 };
 
-const LoginForm: FC<LoginFormProps> = memo(() => {
+export const LoginForm: FC<LoginFormProps> = memo(() => {
   const serverError = useSelector(selectLoginError);
   const isLoading = useSelector(selectLoginIsLoading);
 
@@ -83,5 +83,3 @@ const LoginForm: FC<LoginFormProps> = memo(() => {
     </Formik>
   );
 });
-
-export default LoginForm;

@@ -11,7 +11,7 @@ import { Sidebar } from 'widgets/Sidebar';
 
 import { AppRouter } from './providers/AppRouter/ui/AppRouter';
 
-const App = () => {
+export const App = () => {
   const { theme } = useTheme();
   const dispatch = useDispatch();
 
@@ -47,5 +47,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
