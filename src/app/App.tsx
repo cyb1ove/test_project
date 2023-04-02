@@ -27,7 +27,7 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<MainLayout sidebar={<Sidebar />} navbar={<Navbar />} />}
+            element={<MainLayout sidebar={Sidebar} navbar={Navbar} />}
           >
             {Object.values(routeConfig).map(({ path, element }) => (
               <Route
