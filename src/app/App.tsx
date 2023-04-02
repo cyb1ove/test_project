@@ -2,17 +2,19 @@ import './styles/index.scss';
 
 import clsx from 'clsx';
 import { userActions } from 'entities/User';
-import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { useTheme } from 'shared/hooks/useTheme';
+import { MainLayout } from 'shared/layouts/MainLayout/MainLayout';
+import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
-import { AppRouter } from './providers/AppRouter/ui/AppRouter';
-
 export const App = () => {
   const { theme } = useTheme();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,28 +23,21 @@ export const App = () => {
 
   return (
     <div className={clsx('app', theme)}>
-      <Suspense fallback="">
-        <div className="sidebar-wrapper">
-          <Sidebar />
-        </div>
-
-        <div className="content-page">
-          <div className="navbar-wrapper">
-            <div className="container">
-              <Navbar />
-            </div>
-          </div>
-
-          <div className="page-wrapper">
-            <div className="container">
-              <AppRouter />
-            </div>
-
-            <div className="float-container">
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route
+            path="/"
+            element={<MainLayout sidebar={<Sidebar />} navbar={<Navbar />} />}
+          >
+            {Object.values(routeConfig).map(({ path, element }) => (
+              <Route
+                key={path}
+                element={<Suspense fallback={<Loader />}>{element}</Suspense>}
+                path={path}
+              />
+            ))}
+          </Route>
+        </Routes>
       </Suspense>
     </div>
   );
