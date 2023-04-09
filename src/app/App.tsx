@@ -1,9 +1,10 @@
 import './styles/index.scss';
 
 import clsx from 'clsx';
-import { userActions } from 'entities/User';
+import { selectUserAuthData, userActions } from 'entities/User';
+import { SignupPage } from 'pages/SignupPage/ui/SignupPage';
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { useTheme } from 'shared/hooks/useTheme';
@@ -13,6 +14,8 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
 export const App = () => {
+  const user = useSelector(selectUserAuthData);
+
   const { theme } = useTheme();
 
   const dispatch = useDispatch();
@@ -27,7 +30,13 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<MainLayout sidebar={Sidebar} navbar={Navbar} />}
+            element={
+              user ? (
+                <MainLayout sidebar={Sidebar} navbar={Navbar} />
+              ) : (
+                <SignupPage />
+              )
+            }
           >
             {Object.values(routeConfig).map(({ path, element }) => (
               <Route

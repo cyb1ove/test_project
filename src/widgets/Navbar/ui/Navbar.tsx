@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { getUserAuthData, userActions } from 'entities/User';
+import { selectUserAuthData, userActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
 import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const authData = useSelector(getUserAuthData);
+  const authData = useSelector(selectUserAuthData);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { getTooltipProps, setTooltipRef, setTriggerRef, visible } =
