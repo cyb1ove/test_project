@@ -1,17 +1,13 @@
-import { clsx } from 'clsx';
 import { LoginForm } from 'features/AuthByUsername';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC } from 'react';
 
-interface SignupPageProps {
-  className?: string;
-}
+import classes from './SignupPage.module.scss';
 
-export const SignupPage: FC<SignupPageProps> = ({ className }) => {
+export const SignupPage: FC = () => {
   return (
-    <div className={className}>
+    <div className={classes.SignupPage}>
       <LoginForm />
-      <ThemeSwitcher collapsed={false} />
     </div>
   );
 };

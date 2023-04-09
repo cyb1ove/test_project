@@ -55,7 +55,7 @@ export const LoginForm: FC<LoginFormProps> = memo(() => {
       {({ handleSubmit, handleChange, isValid, errors, values }) => {
         return (
           <Form
-            className={classes.loginForm}
+            className={classes.LoginForm}
             title="Форма авторизации"
             error={serverError}
             onSubmit={handleSubmit}

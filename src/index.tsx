@@ -1,6 +1,7 @@
 import './shared/config/i18n/i18n';
 
 import { ErrorBoundary } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
+import { StableNavigateContextProvider } from 'app/providers/StableNavigateContextProvider';
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { render } from 'react-dom';
@@ -10,13 +11,15 @@ import { App } from './app/App';
 
 render(
   <BrowserRouter>
-    <StoreProvider>
-      <ErrorBoundary>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </ErrorBoundary>
-    </StoreProvider>
+    <StableNavigateContextProvider>
+      <StoreProvider>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ErrorBoundary>
+      </StoreProvider>
+    </StableNavigateContextProvider>
   </BrowserRouter>,
   document.querySelector('#root')
 );
