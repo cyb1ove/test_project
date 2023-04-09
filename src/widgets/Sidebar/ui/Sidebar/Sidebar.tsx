@@ -1,18 +1,16 @@
 import { clsx } from 'clsx';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC, useState } from 'react';
-import HomeIcon from 'shared/assets/icons/home.svg';
-import ListIcon from 'shared/assets/icons/list.svg';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
 import {
   Button,
   ButtonRoundedTypes,
   ButtonSize,
   ThemeButton,
 } from 'shared/ui/Button/Button';
+import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 import classes from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -33,6 +31,17 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         [classes.collapsed]: collapsed,
       })}
     >
+      <ul className={classes.items}>
+        {SidebarItemsList.map(({ path, text, icon }) => (
+          <SidebarItem
+            to={path}
+            text={text}
+            icon={icon}
+            collapsed={collapsed}
+          />
+        ))}
+      </ul>
+
       <Button
         data-testid="collapse-button"
         onClick={onToggle}
@@ -45,26 +54,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         <ShevronIcon />
       </Button>
 
-      <ul className={classes.items}>
-        <AppLink
-          to={RoutePath.main}
-          className={classes.link}
-          text="Главная"
-          icon={<HomeIcon />}
-          collapsed={collapsed}
-        />
-
-        <AppLink
-          to={RoutePath.about}
-          className={classes.link}
-          text="О сайте"
-          icon={<ListIcon />}
-          collapsed={collapsed}
-        />
-      </ul>
-
       <div className={clsx(classes.switchers)}>
-        <ThemeSwitcher className={classes.switcher} collapsed={collapsed} />
+        <ThemeSwitcher className={classes.item} collapsed={collapsed} />
       </div>
     </aside>
   );

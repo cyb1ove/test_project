@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { selectLoginError } from 'features/AuthByUsername/model/selectors/selectLoginError/selectLoginError';
 import { Formik } from 'formik';
 import { FC, memo } from 'react';
@@ -29,7 +30,7 @@ const fields: Fields = {
   password: 'password',
 };
 
-export const LoginForm: FC<LoginFormProps> = memo(() => {
+export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const serverError = useSelector(selectLoginError);
   const isLoading = useSelector(selectLoginIsLoading);
 
@@ -55,7 +56,7 @@ export const LoginForm: FC<LoginFormProps> = memo(() => {
       {({ handleSubmit, handleChange, isValid, errors, values }) => {
         return (
           <Form
-            className={classes.LoginForm}
+            className={clsx(classes.LoginForm, className)}
             title="Форма авторизации"
             error={serverError}
             onSubmit={handleSubmit}

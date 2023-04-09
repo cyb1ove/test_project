@@ -47,18 +47,6 @@
 }
 
 .item {
-  display: flex;
-  align-items: center;
-
+  width: 100%;
   height: var(--sidebar-items-height);
-
-  border-radius: var(--button-border-radius);
-
-  transition: var(--tran-04);
-
-  &:hover {
-    color: var(--background-text-color);
-
-    background-color: var(--primary-color);
-  }
 }

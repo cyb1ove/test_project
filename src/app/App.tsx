@@ -3,7 +3,7 @@ import './styles/index.scss';
 import clsx from 'clsx';
 import { selectUserAuthData, userActions } from 'entities/User';
 import { SignupPage } from 'pages/SignupPage/ui/SignupPage';
-import { memo, Suspense, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
@@ -13,7 +13,7 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
-export const App = memo(() => {
+export const App = () => {
   const user = useSelector(selectUserAuthData);
 
   const { theme } = useTheme();
@@ -49,4 +49,4 @@ export const App = memo(() => {
       </Suspense>
     </div>
   );
-});
+};

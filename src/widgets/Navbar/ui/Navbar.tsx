@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import { selectUserAuthData, userActions } from 'entities/User';
-import { LoginModal } from 'features/AuthByUsername';
 import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePopperTooltip } from 'react-popper-tooltip';
@@ -18,17 +17,17 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   const dispatch = useDispatch();
   const authData = useSelector(selectUserAuthData);
 
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const { getTooltipProps, setTooltipRef, setTriggerRef, visible } =
-    usePopperTooltip({
-      trigger: 'click',
-      placement: 'bottom-end',
-      closeOnOutsideClick: false,
-      visible: showLoginModal,
-      onVisibleChange: setShowLoginModal,
-    });
+  // const [showLoginModal, setShowLoginModal] = useState(false);
+  // const { getTooltipProps, setTooltipRef, setTriggerRef, visible } =
+  //   usePopperTooltip({
+  //     trigger: 'click',
+  //     placement: 'bottom-end',
+  //     closeOnOutsideClick: false,
+  //     visible: showLoginModal,
+  //     onVisibleChange: setShowLoginModal,
+  //   });
 
-  const onCloseLoginModal = useCallback(() => setShowLoginModal(false), []);
+  // const onCloseLoginModal = useCallback(() => setShowLoginModal(false), []);
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
@@ -55,18 +54,10 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         className={clsx(classes.login_button)}
         theme={ThemeButton.OUTLINE}
         size={ButtonSize.MEDIUM}
-        ref={setTriggerRef}
         data-testid="login-button"
       >
         {t('Войти')}
       </Button>
-
-      <LoginModal
-        isOpen={visible && !authData}
-        onClose={onCloseLoginModal}
-        ref={setTooltipRef}
-        {...getTooltipProps()}
-      />
     </div>
   );
 };

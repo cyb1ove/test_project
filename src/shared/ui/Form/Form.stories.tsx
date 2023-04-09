@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Form } from './Form';
 
 export default {
-  title: 'shared/Input',
+  title: 'shared/Form',
   component: Form,
   argTypes: {
     backgroundColor: { control: 'color' },

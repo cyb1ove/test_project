@@ -7,7 +7,7 @@ import classes from './SignupPage.module.scss';
 export const SignupPage: FC = () => {
   return (
     <div className={classes.SignupPage}>
-      <LoginForm />
+      <LoginForm className={classes.LoginForm} />
     </div>
   );
 };
