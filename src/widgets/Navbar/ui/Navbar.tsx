@@ -37,10 +37,9 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
     return (
       <div className={clsx(classes.Navbar, className)}>
         <Button
-          className={clsx(classes.login_button)}
-          size={ButtonSize.MEDIUM}
+          // className={clsx(classes.login_button)}
+          // size={ButtonSize.MEDIUM}
           theme={ThemeButton.OUTLINE}
-          onMouseUp={onLogout}
         >
           {t('Выйти')}
         </Button>

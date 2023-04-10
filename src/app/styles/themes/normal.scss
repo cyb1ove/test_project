@@ -3,9 +3,14 @@
   --sidebar-color: #faffff;
   --navbar-color: #dce1ee;
   --primary-color: #695cfe;
-  --primary-color-light: #f0efef;
+  --primary-color-light: #f6f6f6;
   --toggle-color: #ddd;
   --text-color: #707070;
   --background-text-color: #f6f5ff;
-  --widgets-shadow-color: #bcbcbc;
+  --widgets-shadow-color: #c5c5c5;
+
+  // Rewritable variables
+
+  --button-color: var(--primary-color);
+  --button-text-color: var(--background-text-color);
 }

@@ -18,7 +18,7 @@
 .outline {
   position: relative;
 
-  color: var(--text-color);
+  color: var(--button-text-color);
 
   border: none;
 
@@ -38,7 +38,7 @@
     right: 0;
     content: '';
 
-    border: 2px solid var(--text-color);
+    border: 1.5px solid var(--button-text-color);
     border-radius: var(--button-border-radius);
 
     transition: opacity 0.3s, border 0.3s;
@@ -57,7 +57,7 @@
     border-color: transparent;
     border-radius: 50%;
 
-    background-color: var(--primary-color-light);
+    background-color: var(--button-color);
 
     opacity: 0;
     transform: translate(-10px, -70px) scale(0.1);
@@ -66,7 +66,7 @@
   }
 
   &:hover {
-    box-shadow: 0 0 5px var(--widgets-shadow-color);
+    box-shadow: 0 0 3px var(--widgets-shadow-color);
   }
 
   &:hover::before {
@@ -85,11 +85,11 @@
 }
 
 .background {
-  color: var(--background-text-color);
+  color: var(--button-text-color);
 
   border: none;
 
-  background-color: var(--primary-color);
+  background-color: var(--button-color);
 }
 
 .full_rounded {

@@ -11,12 +11,12 @@ import classes from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
   className?: string;
-  collapsed: boolean;
+  collapsed?: boolean;
 }
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
   className,
-  collapsed,
+  collapsed = false,
 }) => {
   const { theme, toggleTheme } = useTheme();
   const [checked, setChecked] = useState(theme === Theme.DARK);

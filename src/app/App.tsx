@@ -3,7 +3,7 @@ import './styles/index.scss';
 import clsx from 'clsx';
 import { selectUserAuthData, userActions } from 'entities/User';
 import { SignupPage } from 'pages/SignupPage/ui/SignupPage';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
@@ -15,6 +15,7 @@ import { Sidebar } from 'widgets/Sidebar';
 
 export const App = () => {
   const user = useSelector(selectUserAuthData);
+  const [pagePending, setPagePending] = useState(true);
 
   const { theme } = useTheme();
 
@@ -22,7 +23,12 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
+    setPagePending(false);
   }, []);
+
+  if (pagePending) {
+    return <Loader />;
+  }
 
   const RequireAuth = user ? (
     <MainLayout sidebar={Sidebar} navbar={Navbar} />

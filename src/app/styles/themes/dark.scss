@@ -8,4 +8,9 @@
   --text-color: #ccc;
   --background-text-color: #ccc;
   --widgets-shadow-color: #181717;
+
+  // Rewritable variables
+
+  --button-color: var(--primary-color);
+  --button-text-color: var(--text-color);
 }

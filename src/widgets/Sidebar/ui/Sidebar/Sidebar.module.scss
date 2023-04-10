@@ -1,5 +1,6 @@
 .Sidebar {
   position: relative;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@
 
   & .collapsedBtn {
     position: absolute;
-    bottom: 100px;
+    bottom: 180px;
     right: 0;
 
     transform: translateX(50%);
@@ -47,6 +48,9 @@
 }
 
 .item {
+  --button-color: var(--primary-color-light);
+  --button-text-color: var(--text-color);
+
   width: 100%;
   height: var(--sidebar-items-height);
 }

@@ -8,6 +8,7 @@ export const SignupPage: FC = () => {
   return (
     <div className={classes.SignupPage}>
       <LoginForm className={classes.LoginForm} />
+      <ThemeSwitcher />
     </div>
   );
 };

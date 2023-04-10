@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
 import {
   Button,
@@ -18,6 +19,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
 
   const onToggle = () => {
@@ -44,18 +46,20 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
       <Button
         data-testid="collapse-button"
-        onClick={onToggle}
         className={classes.collapsedBtn}
         theme={ThemeButton.BACKGROUND}
         rounded={ButtonRoundedTypes.FULL}
         size={ButtonSize.SMALL}
         squared
+        onClick={onToggle}
       >
         <ShevronIcon />
       </Button>
 
       <div className={clsx(classes.switchers)}>
-        <ThemeSwitcher className={classes.item} collapsed={collapsed} />
+        <Button className={clsx(classes.item)} theme={ThemeButton.OUTLINE}>
+          {t('Выйти')}
+        </Button>
       </div>
     </aside>
   );

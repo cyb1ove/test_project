@@ -1,4 +1,7 @@
 .Navbar {
+  --button-color: var(--primary-color-light);
+  --button-text-color: var(--text-color);
+
   position: relative;
   z-index: 2;
 
