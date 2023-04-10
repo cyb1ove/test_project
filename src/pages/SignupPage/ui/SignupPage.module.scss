@@ -1,16 +1,12 @@
 .SignupPage {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1em;
   justify-content: center;
   align-items: center;
 
   width: 100vw;
   height: 100vh;
-
-  // & > * {
-  //   box-shadow: 0 0 10px var(--widgets-shadow-color);
-  // }
 }
 
 .additional {
