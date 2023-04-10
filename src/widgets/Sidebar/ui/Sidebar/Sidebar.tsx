@@ -1,7 +1,8 @@
 import { clsx } from 'clsx';
-import { ThemeSwitcher } from 'features/ThemeSwitcher';
+import { selectUserAuthData } from 'entities/User';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
 import {
   Button,
@@ -19,7 +20,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
-  const { t } = useTranslation();
+  const user = useSelector(selectUserAuthData);
   const [collapsed, setCollapsed] = useState(false);
 
   const onToggle = () => {
@@ -57,8 +58,16 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       </Button>
 
       <div className={clsx(classes.switchers)}>
-        <Button className={clsx(classes.item)} theme={ThemeButton.OUTLINE}>
-          {t('Выйти')}
+        <Button
+          className={clsx(classes.item)}
+          theme={ThemeButton.OUTLINE}
+          size={ButtonSize.MEDIUM}
+        >
+          <div className={classes.avatarWrapper}>
+            <img className={classes.avatar} src={user.avatar} />
+          </div>
+
+          <span className={classes.username}>{user.username}</span>
         </Button>
       </div>
     </aside>

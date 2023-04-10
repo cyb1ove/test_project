@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, FC, forwardRef, useState } from 'react';
 
 import { ButtonLoader } from '../ButtonLoader/ButtonLoader';
 import classes from './Button.module.scss';
@@ -30,40 +30,33 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   pending?: boolean;
 }
 
-type Ref = HTMLButtonElement;
+export const Button: FC<ButtonProps> = ({
+  children,
+  className,
+  theme = ThemeButton.BACKGROUND,
+  rounded = ButtonRoundedTypes.PARTLY,
+  size = ButtonSize.SMALL,
+  squared,
+  pending,
+  ...otherProps
+}) => {
+  const [initialWidth, setInitialWidth] = useState(0);
 
-export const Button = forwardRef<Ref, ButtonProps>(
-  (
-    {
-      children,
-      className,
-      theme = ThemeButton.BACKGROUND,
-      rounded = ButtonRoundedTypes.PARTLY,
-      size = ButtonSize.SMALL,
-      squared,
-      pending,
-      ...otherProps
-    },
-    ref
-  ) => {
-    const mods = [
-      classes[theme],
-      classes[size],
-      rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
-      { [classes.squared]: squared },
-    ];
+  const mods = [
+    classes[theme],
+    classes[size],
+    rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
+    { [classes.squared]: squared },
+  ];
 
-    return (
-      <button
-        ref={ref}
-        className={clsx(classes.Button, className, mods)}
-        {...otherProps}
-      >
-        {pending && <ButtonLoader className={classes.loader} />}
-        <span className={clsx({ [classes.text_hidden]: pending })}>
-          {children}
-        </span>
-      </button>
-    );
-  }
-);
+  return (
+    <button
+      ref={(node) => setInitialWidth(node ? node.offsetWidth : 0)}
+      className={clsx(classes.Button, className, mods)}
+      style={pending ? { width: initialWidth } : {}}
+      {...otherProps}
+    >
+      {pending ? <ButtonLoader className={classes.loader} /> : children}
+    </button>
+  );
+};

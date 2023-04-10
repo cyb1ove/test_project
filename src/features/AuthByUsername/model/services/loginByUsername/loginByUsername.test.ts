@@ -10,7 +10,7 @@ const mockedAxios = jest.mocked(axios, true);
 
 describe('loginByUsername.test', () => {
   test('success login', async () => {
-    const userValue = { username: '123', id: '1' };
+    const userValue = { username: '123', id: '1', avatar: 'slave.jpg' };
     mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
 
     const thunk = new TestAsyncThunk(loginByUsername);

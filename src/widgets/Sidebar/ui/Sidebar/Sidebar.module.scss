@@ -29,8 +29,39 @@
   }
 }
 
+.avatar {
+  width: 100%;
+  height: 100%;
+
+  border-radius: var(--button-border-radius);
+
+  transition: width 0.4s, height 0.4s;
+}
+
+.avatarWrapper {
+  width: var(--sidebar-images-space);
+  height: 100%;
+  min-width: var(--sidebar-images-space);
+  padding: 10px;
+
+  border-radius: var(--button-border-radius);
+
+  overflow: hidden;
+
+  transition: padding 0.4s;
+}
+
 .collapsed {
   width: var(--sidebar-width-collapsed);
+
+  & .avatarWrapper {
+    padding: 0;
+  }
+
+  & .avatar {
+    width: var(--sidebar-images-space);
+    height: var(--sidebar-images-space);
+  }
 }
 
 .vertical {
@@ -51,6 +82,9 @@
   --button-color: var(--primary-color-light);
   --button-text-color: var(--text-color);
 
+  justify-content: flex-start;
+
   width: 100%;
   height: var(--sidebar-items-height);
+  padding: 0;
 }
