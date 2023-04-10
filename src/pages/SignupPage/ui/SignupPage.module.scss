@@ -8,7 +8,12 @@
   width: 100vw;
   height: 100vh;
 
-  & > * {
-    box-shadow: 0 0 10px var(--widgets-shadow-color);
-  }
+  // & > * {
+  //   box-shadow: 0 0 10px var(--widgets-shadow-color);
+  // }
+}
+
+.additional {
+  display: flex;
+  gap: 1em;
 }

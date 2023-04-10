@@ -1,4 +1,5 @@
 import { LoginForm } from 'features/AuthByUsername';
+import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { FC } from 'react';
 
@@ -8,7 +9,11 @@ export const SignupPage: FC = () => {
   return (
     <div className={classes.SignupPage}>
       <LoginForm />
-      <ThemeSwitcher />
+
+      <div className={classes.additional}>
+        <ThemeSwitcher />
+        <LanguageSwitcher />
+      </div>
     </div>
   );
 };

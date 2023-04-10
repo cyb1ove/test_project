@@ -30,7 +30,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
         className={clsx(classes.LanguageSwitcher, className)}
         onClick={toggle}
         rounded={ButtonRoundedTypes.PARTLY}
-        size={ButtonSize.MEDIUM}
+        size={ButtonSize.LARGE}
         squared
       >
         <span>{i18n.language}</span>

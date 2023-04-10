@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
-import { selectUserAuthData } from 'entities/User';
-import { FC, useState } from 'react';
+import { selectUserAuthData, userActions } from 'entities/User';
+import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
 import {
   Button,
@@ -23,9 +23,15 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
   const user = useSelector(selectUserAuthData);
   const [collapsed, setCollapsed] = useState(false);
 
+  const dispatch = useDispatch();
+
   const onToggle = () => {
     setCollapsed((prev) => !prev);
   };
+
+  const onLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
   return (
     <aside
@@ -62,6 +68,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
           className={clsx(classes.item)}
           theme={ThemeButton.OUTLINE}
           size={ButtonSize.MEDIUM}
+          onDoubleClick={onLogout}
         >
           <div className={classes.avatarWrapper}>
             <img className={classes.avatar} src={user.avatar} />
