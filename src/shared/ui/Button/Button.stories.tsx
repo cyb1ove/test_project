@@ -12,29 +12,30 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Outline = Template.bind({});
 Outline.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.OUTLINE,
 };
 
 export const Background = Template.bind({});
 Background.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.BACKGROUND,
 };
 
 export const DarkBackground = Template.bind({});
 DarkBackground.args = {
-  children: 'Text',
+  children: 'Hello world',
 };
 DarkBackground.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const DarkOutline = Template.bind({});
 DarkOutline.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.OUTLINE,
 };
 DarkOutline.decorators = [ThemeDecorator(Theme.DARK)];
@@ -48,21 +49,21 @@ Round.args = {
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.SMALL,
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.MEDIUM,
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  children: 'Text',
+  children: 'Hello world',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.LARGE,
 };

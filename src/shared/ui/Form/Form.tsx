@@ -3,7 +3,7 @@ import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
 
-import { Button, ButtonSize } from '../Button/Button';
+import { Button, ButtonSize, ThemeButton } from '../Button/Button';
 import { Text, TextTheme } from '../Text/Text';
 import classes from './Form.module.scss';
 
@@ -43,6 +43,7 @@ export const Form: FC<FormProps> = ({
         className={classes.loginBtn}
         disabled={!isValid}
         size={ButtonSize.MEDIUM}
+        theme={ThemeButton.BACKGROUND}
         pending={isLoading}
       >
         {t('Войти')}

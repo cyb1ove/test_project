@@ -32,6 +32,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  const mods = { [classes.collapsed]: collapsed };
+
   return (
     <aside
       data-testid="sidebar"
@@ -58,23 +60,18 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         shaped={ShapedTypes.CIRCLE}
         onClick={onToggle}
       >
-        <ShevronIcon />
+        <ShevronIcon className={clsx(mods)} />
       </Button>
 
-      <div className={clsx(classes.switchers)}>
-        <Button
-          className={clsx(classes.item)}
-          theme={ThemeButton.OUTLINE}
-          size={ButtonSize.MEDIUM}
-          onDoubleClick={onLogout}
-        >
-          <div className={classes.avatarWrapper}>
-            <img className={classes.avatar} src={user.avatar} />
-          </div>
-
-          <span className={classes.username}>{user.username}</span>
-        </Button>
-      </div>
+      <Button
+        className={clsx(classes.item)}
+        theme={ThemeButton.OUTLINE}
+        size={ButtonSize.LARGE}
+        onDoubleClick={onLogout}
+        image={<img className={classes.avatar} src={user.avatar} />}
+      >
+        <span className={clsx(classes.username, mods)}>{user.username}</span>
+      </Button>
     </aside>
   );
 };

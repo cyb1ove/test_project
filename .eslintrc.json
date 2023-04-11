@@ -101,6 +101,7 @@
     "import/no-extraneous-dependencies": "off",
     "typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "i18next/no-literal-string": [
       "error",
       {
