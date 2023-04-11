@@ -12,5 +12,6 @@
   // Rewritable variables
 
   --button-color: var(--primary-color);
-  --button-text-color: var(--text-color);
+  --button-text-color: var(--background-text-color);
+  --button-outline-color: var(--text-color);
 }

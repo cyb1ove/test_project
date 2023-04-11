@@ -3,8 +3,8 @@ import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Button,
-  ButtonRoundedTypes,
   ButtonSize,
+  ShapedTypes,
   ThemeButton,
 } from 'shared/ui/Button/Button';
 
@@ -29,9 +29,8 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
         theme={ThemeButton.BACKGROUND}
         className={clsx(classes.LanguageSwitcher, className)}
         onClick={toggle}
-        rounded={ButtonRoundedTypes.PARTLY}
         size={ButtonSize.LARGE}
-        squared
+        shaped={ShapedTypes.SQUARE}
       >
         <span>{i18n.language}</span>
       </Button>

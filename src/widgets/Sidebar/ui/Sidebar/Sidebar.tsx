@@ -1,13 +1,12 @@
 import { clsx } from 'clsx';
 import { selectUserAuthData, userActions } from 'entities/User';
 import { FC, useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
 import {
   Button,
-  ButtonRoundedTypes,
   ButtonSize,
+  ShapedTypes,
   ThemeButton,
 } from 'shared/ui/Button/Button';
 import { SidebarItemsList } from 'widgets/Sidebar/model/items';
@@ -55,9 +54,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         data-testid="collapse-button"
         className={classes.collapsedBtn}
         theme={ThemeButton.BACKGROUND}
-        rounded={ButtonRoundedTypes.FULL}
         size={ButtonSize.SMALL}
-        squared
+        shaped={ShapedTypes.CIRCLE}
         onClick={onToggle}
       >
         <ShevronIcon />

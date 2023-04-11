@@ -8,17 +8,15 @@
   height: 2.5em;
   padding: 0 1.25em;
 
-  cursor: pointer;
+  border-radius: var(--button-border-radius);
 
-  & span {
-    display: flex;
-  }
+  cursor: pointer;
 }
 
 .outline {
   position: relative;
 
-  color: var(--button-text-color);
+  color: var(--button-outline-color);
 
   border: none;
 
@@ -38,7 +36,7 @@
     right: 0;
     content: '';
 
-    border: 1.5px solid var(--button-text-color);
+    border: 1.5px solid var(--button-outline-color);
     border-radius: var(--button-border-radius);
 
     transition: opacity 0.3s, border 0.3s;
@@ -66,7 +64,7 @@
   }
 
   &:hover {
-    box-shadow: 0 0 5px var(--widgets-shadow-color);
+    box-shadow: 0 0 5px 2px var(--widgets-shadow-color);
   }
 
   &:hover::before {
@@ -88,24 +86,15 @@
   background-color: var(--button-color);
 }
 
-.full_rounded {
-  padding: 0;
-
+.circle {
   border-radius: 50%;
-}
-
-.partly_rounded {
-  border-radius: var(--button-border-radius);
-}
-
-.squared {
-  padding: 0;
 }
 
 :is(.small,
 .medium,
-.large):is(.squared, .full_rounded) {
+.large):is(.square, .circle) {
   width: 2.5em;
+  padding: 0;
 }
 
 .small {

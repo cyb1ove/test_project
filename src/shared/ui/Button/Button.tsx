@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { ButtonHTMLAttributes, FC, forwardRef, useState } from 'react';
+import { ButtonHTMLAttributes, FC, useState } from 'react';
 
 import { ButtonLoader } from '../ButtonLoader/ButtonLoader';
 import classes from './Button.module.scss';
@@ -16,27 +16,25 @@ export enum ButtonSize {
   LARGE = 'large',
 }
 
-export enum ButtonRoundedTypes {
-  FULL = 'full',
-  PARTLY = 'partly',
+export enum ShapedTypes {
+  SQUARE = 'square',
+  CIRCLE = 'circle',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
-  rounded?: ButtonRoundedTypes;
   size?: ButtonSize;
-  squared?: boolean;
   pending?: boolean;
+  shaped?: ShapedTypes;
 }
 
 export const Button: FC<ButtonProps> = ({
   children,
   className,
   theme = ThemeButton.BACKGROUND,
-  rounded = ButtonRoundedTypes.PARTLY,
   size = ButtonSize.SMALL,
-  squared,
+  shaped,
   pending,
   ...otherProps
 }) => {
@@ -45,8 +43,7 @@ export const Button: FC<ButtonProps> = ({
   const mods = [
     classes[theme],
     classes[size],
-    rounded === 'full' ? classes.full_rounded : classes.partly_rounded,
-    { [classes.squared]: squared },
+    shaped ? classes[shaped] : undefined,
   ];
 
   return (

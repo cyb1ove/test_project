@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 
-import { Button, ButtonRoundedTypes, ButtonSize, ThemeButton } from './Button';
+import { Button, ButtonSize, ShapedTypes, ThemeButton } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -43,7 +43,7 @@ export const Round = Template.bind({});
 Round.args = {
   children: '>',
   theme: ThemeButton.BACKGROUND,
-  rounded: ButtonRoundedTypes.FULL,
+  shaped: ShapedTypes.CIRCLE,
 };
 
 export const SizeSmall = Template.bind({});
@@ -72,5 +72,5 @@ Squared.args = {
   children: 'RU',
   theme: ThemeButton.BACKGROUND,
   size: ButtonSize.MEDIUM,
-  squared: true,
+  shaped: ShapedTypes.SQUARE,
 };
