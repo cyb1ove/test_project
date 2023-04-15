@@ -1,11 +1,11 @@
 import { Theme } from 'app/providers/ThemeProvider';
-import { clsx } from 'clsx';
-import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { FC } from 'react';
 import Switch from 'react-switch';
 import MoonIcon from 'shared/assets/icons/moon.svg';
 import SunIcon from 'shared/assets/icons/sun.svg';
 import { useTheme } from 'shared/hooks/useTheme';
+import useToggle from 'shared/hooks/useToggle';
+import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 
 import classes from './ThemeSwitcher.module.scss';
 
@@ -19,41 +19,39 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
   collapsed = false,
 }) => {
   const { theme, toggleTheme } = useTheme();
-  const [checked, setChecked] = useState(theme === Theme.DARK);
-  const { t } = useTranslation();
+  const [checked, setChecked] = useToggle(theme === Theme.DARK);
 
-  const mods = [{ [classes.collapsed]: collapsed }];
-
-  const handleChange = (checked: boolean) => {
+  const handleChange = () => {
     toggleTheme();
-    setChecked(checked);
+    setChecked();
   };
 
+  const switcher = (
+    <Switch
+      className={classes.ThemeSwitcher}
+      onChange={() => {}}
+      checked={checked}
+      offColor="#ddd"
+      onColor="#fff"
+      onHandleColor="#000"
+      handleDiameter={10}
+      uncheckedIcon={false}
+      height={20}
+      width={38}
+    />
+  );
+
   return (
-    <div className={clsx(classes.ThemeSwitcher, className, mods)}>
-      <div className={classes.theme}>
-        <div className={classes.moon_sun}>
-          {theme === Theme.DARK ? <MoonIcon /> : <SunIcon />}
-        </div>
-
-        <span className={classes.mode_text}>
-          {theme === Theme.DARK ? t('Тёмная') : t('Светлая')}
-        </span>
-      </div>
-
-      <div className={classes.toggle_switch}>
-        <Switch
-          onChange={handleChange}
-          checked={checked}
-          offColor="#ddd"
-          onColor="#fff"
-          onHandleColor="#000"
-          handleDiameter={10}
-          uncheckedIcon={false}
-          height={20}
-          width={38}
-        />
-      </div>
-    </div>
+    <Button
+      className={className}
+      theme={ThemeButton.SECONDARY}
+      size={ButtonSize.MEDIUM}
+      leftElement={theme === Theme.DARK ? <MoonIcon /> : <SunIcon />}
+      rightElement={switcher}
+      text={theme === Theme.DARK ? 'Тёмная' : 'Светлая'}
+      maxLengthText="Светлая"
+      collapsed={collapsed}
+      onClickCapture={handleChange}
+    />
   );
 };

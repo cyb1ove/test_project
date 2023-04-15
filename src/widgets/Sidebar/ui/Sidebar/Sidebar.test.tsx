@@ -1,4 +1,7 @@
+import 'jest-location-mock';
+
 import { fireEvent, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 
 import { Sidebar } from './Sidebar';

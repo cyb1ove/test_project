@@ -1,7 +1,5 @@
-import { useTranslation } from 'react-i18next';
+import { Text } from 'shared/ui/Text/Text';
 
 export const AboutPage = () => {
-  const { t } = useTranslation('about');
-
-  return <div>{t('О сайте')}</div>;
+  return <Text title="О сайте" />;
 };

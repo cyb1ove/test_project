@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
+import ListIcon from 'shared/assets/icons/list.svg';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 
 import { Button, ButtonSize, ShapedTypes, ThemeButton } from './Button';
@@ -8,70 +9,112 @@ export default {
   title: 'shared/Button',
   component: Button,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    PRIMARYColor: { control: 'color' },
   },
 } as ComponentMeta<typeof Button>;
 
 // @ts-ignore
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
+export const Empty = Template.bind({});
+Empty.args = {
+  text: 'Hello world',
+};
+
+export const EmptyDark = Template.bind({});
+EmptyDark.args = {
+  text: 'Hello world',
+};
+EmptyDark.decorators = [ThemeDecorator(Theme.DARK)];
+
 export const Outline = Template.bind({});
 Outline.args = {
-  children: 'Hello world',
+  text: 'Hello world',
   theme: ThemeButton.OUTLINE,
 };
 
-export const Background = Template.bind({});
-Background.args = {
-  children: 'Hello world',
-  theme: ThemeButton.BACKGROUND,
+export const PRIMARY = Template.bind({});
+PRIMARY.args = {
+  text: 'Hello world',
+  theme: ThemeButton.PRIMARY,
 };
 
-export const DarkBackground = Template.bind({});
-DarkBackground.args = {
-  children: 'Hello world',
+export const DarkPRIMARY = Template.bind({});
+DarkPRIMARY.args = {
+  text: 'Hello world',
+  theme: ThemeButton.PRIMARY,
 };
-DarkBackground.decorators = [ThemeDecorator(Theme.DARK)];
+DarkPRIMARY.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const DarkOutline = Template.bind({});
 DarkOutline.args = {
-  children: 'Hello world',
+  text: 'Hello world',
   theme: ThemeButton.OUTLINE,
 };
 DarkOutline.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const Round = Template.bind({});
 Round.args = {
-  children: '>',
-  theme: ThemeButton.BACKGROUND,
+  icon: <ListIcon />,
+  theme: ThemeButton.PRIMARY,
   shaped: ShapedTypes.CIRCLE,
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  children: 'Hello world',
-  theme: ThemeButton.BACKGROUND,
+  text: 'Hello world',
+  theme: ThemeButton.PRIMARY,
   size: ButtonSize.SMALL,
 };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
-  children: 'Hello world',
-  theme: ThemeButton.BACKGROUND,
+  text: 'Hello world',
+  theme: ThemeButton.PRIMARY,
   size: ButtonSize.MEDIUM,
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  children: 'Hello world',
-  theme: ThemeButton.BACKGROUND,
+  text: 'Hello world',
+  theme: ThemeButton.PRIMARY,
   size: ButtonSize.LARGE,
 };
 
 export const Squared = Template.bind({});
 Squared.args = {
-  children: 'RU',
-  theme: ThemeButton.BACKGROUND,
+  text: 'RU',
+  theme: ThemeButton.PRIMARY,
   size: ButtonSize.MEDIUM,
   shaped: ShapedTypes.SQUARE,
+};
+
+export const WithImage = Template.bind({});
+WithImage.args = {
+  text: 'Hello world',
+  leftElement: <ListIcon />,
+};
+
+export const WithImageSizeM = Template.bind({});
+WithImageSizeM.args = {
+  text: 'Hello world',
+  rightElement: <ListIcon />,
+  size: ButtonSize.MEDIUM,
+  theme: ThemeButton.OUTLINE,
+};
+
+export const WithImageSizeMPRIMARY = Template.bind({});
+WithImageSizeMPRIMARY.args = {
+  text: 'Hello world',
+  leftElement: <ListIcon />,
+  rightElement: <ListIcon />,
+  size: ButtonSize.LARGE,
+  theme: ThemeButton.PRIMARY,
+};
+
+export const LoadingButton = Template.bind({});
+LoadingButton.args = {
+  pending: true,
+  theme: ThemeButton.PRIMARY,
+  text: 'test',
 };

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Text } from 'shared/ui/Text/Text';
 
 import classes from './PageError.module.scss';
 
@@ -9,11 +10,9 @@ interface ErrorPageProps {
 }
 
 export const PageError: FC<ErrorPageProps> = ({ className }) => {
-  const { t } = useTranslation();
-
   return (
     <div className={clsx(classes.ErrorPage, className)}>
-      <p>{t('Произошла непредвиденная ошибка')}</p>
+      <Text title="Произошла непредвиденная ошибка" />
     </div>
   );
 };

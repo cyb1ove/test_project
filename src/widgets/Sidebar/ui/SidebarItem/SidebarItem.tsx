@@ -1,7 +1,5 @@
 import { ErrorContext } from 'app/providers/ErrorBoundary/ui/ErrorBoundary';
-import { clsx } from 'clsx';
 import { ComponentType, FC, useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { LinkProps, NavLink, useLocation } from 'react-router-dom';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 
@@ -11,24 +9,13 @@ interface SidebarItemProps extends LinkProps {
   text: string;
   to: string;
   icon: ComponentType;
-  collapsed: boolean;
 }
 
-export const SidebarItem: FC<SidebarItemProps> = ({
-  to,
-  text,
-  collapsed,
-  icon: Icon,
-}) => {
+export const SidebarItem: FC<SidebarItemProps> = ({ to, text, icon: Icon }) => {
   const location = useLocation();
-  const { t } = useTranslation();
   const { clearError } = useContext(ErrorContext);
 
   const [active, setActive] = useState(false);
-
-  const mods = {
-    [classes.collapsed]: collapsed,
-  };
 
   useEffect(() => {
     if (location.pathname === to) {
@@ -44,11 +31,12 @@ export const SidebarItem: FC<SidebarItemProps> = ({
         component={NavLink}
         to={to}
         size={ButtonSize.LARGE}
-        image={<Icon />}
-        theme={active ? ThemeButton.BACKGROUND : ThemeButton.EMPTY}
-        hoverTheme={ThemeButton.BACKGROUND}
+        leftElement={<Icon />}
+        theme={active ? ThemeButton.PRIMARY : ThemeButton.EMPTY}
+        hoverTheme={ThemeButton.PRIMARY}
+        align="left"
       >
-        <span className={clsx(classes.text, mods)}>{t(text)}</span>
+        {text}
       </Button>
     </li>
   );

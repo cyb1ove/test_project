@@ -88,6 +88,7 @@ section,
 summary,
 time,
 mark,
+button,
 audio,
 video {
   margin: 0;
@@ -99,6 +100,8 @@ video {
   vertical-align: baseline;
 
   border: 0;
+
+  background: transparent;
 }
 
 /* HTML5 display-role reset for older browsers */

@@ -2,8 +2,7 @@
   position: relative;
 
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   height: 2.5em;
@@ -18,31 +17,6 @@
   cursor: pointer;
 
   overflow: hidden;
-
-  &.withImage {
-    flex-shrink: 0;
-    justify-content: flex-start;
-
-    padding: 0 10px;
-  }
-}
-
-.image_container {
-  display: flex;
-  flex-shrink: 0;
-
-  height: 60%;
-  aspect-ratio: 1 / 1;
-
-  border-radius: var(--button-border-radius);
-
-  overflow: hidden;
-
-  transition: all 0.3s;
-
-  & > * {
-    margin: auto;
-  }
 }
 
 .outline {
@@ -106,28 +80,25 @@
     transform: scale(1) translate(-10px, -70px);
     transform-origin: 100px 100px;
   }
-
-  & :is(img, svg) {
-    transition: all 0.3s;
-  }
 }
 
-.background {
-  color: var(--background-text-color);
-
+.primary,
+.secondary {
   border: none;
 
-  background-color: var(--primary-color);
-
   transition: all 0.3s;
-
-  & :is(img, svg) {
-    transition: all 0.3s;
-  }
 }
 
-.empty {
-  transition: all 0.3s;
+.primary {
+  color: var(--background-text-color);
+
+  background-color: var(--primary-color);
+}
+
+.secondary {
+  color: var(--text-color);
+
+  background-color: var(--primary-color-light);
 }
 
 .circle {
@@ -138,32 +109,99 @@
   padding: 0;
 }
 
-.small {
-  height: 30px;
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-  &:is(.square, .circle) {
-    width: 30px;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.left_container,
+.right_container {
+  display: none;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.extraElements {
+  padding: 0;
+
+  & :is(.left_container, .right_container) {
+    display: flex;
+  }
+}
+
+.text_container {
+  position: relative;
+
+  flex-grow: 1;
+
+  margin: 0 -6px;
+  padding: 0 6px;
+
+  &::after {
+    content: attr(data-text);
+
+    opacity: 0;
+  }
+}
+
+.text {
+  position: absolute;
+
+  &.right_align {
+    right: 0;
+  }
+
+  &.left_align {
+    left: 0;
+  }
+}
+
+.small {
+  height: 36px;
+
+  & :is(.left_container, .right_container) {
+    height: 36px;
+    min-width: 36px;
+  }
+
+  &:is(.square, .circle),
+  &.collapsed {
+    width: 36px;
   }
 }
 
 .medium {
-  height: 40px;
+  height: 45px;
 
-  &:is(.square, .circle) {
-    width: 40px;
+  & :is(.left_container, .right_container) {
+    height: 45px;
+    min-width: 45px;
+  }
+
+  &:is(.square, .circle),
+  &.collapsed {
+    width: 45px;
   }
 }
 
 .large {
-  height: 50px;
+  height: 54px;
 
-  &:is(.square, .circle) {
-    width: 50px;
+  & :is(.left_container, .right_container) {
+    height: 54px;
+    min-width: 54px;
+  }
+
+  &:is(.square, .circle),
+  &.collapsed {
+    width: 54px;
   }
 }
 
-.loader {
-  position: absolute;
-
-  transform: scale(0.5);
+.icon {
+  justify-content: center;
 }

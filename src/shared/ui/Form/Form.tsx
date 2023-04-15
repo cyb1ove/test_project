@@ -1,15 +1,14 @@
 import { clsx } from 'clsx';
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'shared/ui/Input/Input';
 
 import { Button, ButtonSize, ThemeButton } from '../Button/Button';
-import { Text, TextTheme } from '../Text/Text';
+import { Text } from '../Text/Text';
 import classes from './Form.module.scss';
 
 interface FormProps {
   className?: string;
-  children: ReactElement<typeof Input>[];
+  children: ReactElement;
   title: string;
   error: string;
   onSubmit: (e?: React.FormEvent<HTMLFormElement>) => void;
@@ -21,33 +20,23 @@ export const Form: FC<FormProps> = ({
   className,
   children,
   title,
-  error,
   onSubmit,
   isValid,
   isLoading,
-}) => {
-  const { t } = useTranslation();
+}) => (
+  <form className={clsx(classes.Form, className)} onSubmit={onSubmit}>
+    <Text title={title} />
 
-  return (
-    <form className={clsx(classes.Form, className)} onSubmit={onSubmit}>
-      <div>
-        <h1>{t(title)}</h1>
+    {children}
 
-        <Text theme={TextTheme.ERROR} text={error} className={classes.error} />
-      </div>
-
-      {children}
-
-      <Button
-        type="submit"
-        className={classes.loginBtn}
-        disabled={!isValid}
-        size={ButtonSize.MEDIUM}
-        theme={ThemeButton.BACKGROUND}
-        pending={isLoading}
-      >
-        {t('Войти')}
-      </Button>
-    </form>
-  );
-};
+    <Button
+      type="submit"
+      className={classes.loginBtn}
+      disabled={!isValid}
+      size={ButtonSize.SMALL}
+      theme={ThemeButton.PRIMARY}
+      pending={isLoading}
+      text="Войти"
+    />
+  </form>
+);

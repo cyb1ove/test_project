@@ -6,8 +6,10 @@ import {
   createElement,
   CSSProperties,
   ReactElement,
+  useCallback,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import useHover from 'react-use-hover';
 
 import { ButtonLoader } from '../ButtonLoader/ButtonLoader';
@@ -41,8 +43,9 @@ function BaseButton<C extends BaseButtonComponent = 'button'>({
 }
 
 export enum ThemeButton {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
   OUTLINE = 'outline',
-  BACKGROUND = 'background',
   EMPTY = 'empty',
 }
 
@@ -61,11 +64,17 @@ type ButtonProps<C extends BaseButtonComponent = 'button'> =
   BaseButtonProps<C> & {
     theme?: ThemeButton;
     size?: ButtonSize;
+    align?: 'left' | 'center' | 'right';
     pending?: boolean;
     shaped?: ShapedTypes;
-    image?: ReactElement;
+    leftElement?: ReactElement;
+    rightElement?: ReactElement;
+    icon?: ReactElement;
+    text?: string;
+    maxLengthText?: string;
     innerRef?: React.RefObject<HTMLElement>;
     hoverTheme?: ThemeButton;
+    collapsed?: boolean;
   };
 
 export function Button<C extends BaseButtonComponent = 'button'>({
@@ -75,38 +84,72 @@ export function Button<C extends BaseButtonComponent = 'button'>({
   size = ButtonSize.SMALL,
   shaped,
   pending,
-  image,
+  leftElement,
+  rightElement,
+  text,
+  align,
+  maxLengthText,
+  collapsed,
   hoverTheme,
+  icon,
   ...otherProps
 }: ButtonProps<C>) {
-  const [initialWidth, setInitialWidth] = useState(0);
   const [isHovering, hoverProps] = useHover();
+  const { t } = useTranslation();
 
   const actualTheme = isHovering ? hoverTheme || theme : theme;
-  const mods = [classes[actualTheme], classes[size], classes[shaped]];
+  const plainMods = [
+    classes[actualTheme],
+    classes[size],
+    classes[shaped],
+    classes[`${align}_align`],
+  ];
 
-  const modsObj = {
-    [classes.withImage]: !!image,
+  const objectMods = {
+    [classes.extraElements]: !!(leftElement || rightElement),
+    [classes.collapsed]: collapsed,
+    [classes.icon]: !!shaped,
+  };
+
+  const textMods = {
+    [classes.right_align]: leftElement && !rightElement && !align,
+    [classes.left_align]: rightElement && !leftElement && !align,
+  };
+
+  const renderContent = () => {
+    if (icon) {
+      return icon;
+    }
+
+    return (
+      <>
+        <div className={classes.left_container}>{leftElement}</div>
+
+        <div
+          data-text={maxLengthText || text || children}
+          className={classes.text_container}
+        >
+          {pending ? (
+            <ButtonLoader className={classes.loader} />
+          ) : (
+            <span className={clsx(classes.text, textMods)}>
+              {t(text || children)}
+            </span>
+          )}
+        </div>
+
+        <div className={classes.right_container}>{rightElement}</div>
+      </>
+    );
   };
 
   return (
     <BaseButton<C>
-      innerRef={(node: HTMLElement) =>
-        setInitialWidth(node ? node.offsetWidth : 0)
-      }
-      className={clsx(classes.Button, className, mods, modsObj)}
-      style={pending ? { width: initialWidth } : {}}
+      className={clsx(classes.Button, className, plainMods, objectMods)}
       {...hoverProps}
       {...(otherProps as BaseButtonProps<C>)}
     >
-      {pending ? (
-        <ButtonLoader className={classes.loader} />
-      ) : (
-        <>
-          {image && <div className={classes.image_container}>{image}</div>}
-          {children}
-        </>
-      )}
+      {renderContent()}
     </BaseButton>
   );
 }

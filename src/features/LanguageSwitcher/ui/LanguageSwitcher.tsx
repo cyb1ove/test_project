@@ -21,19 +21,18 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
     const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
 
-      i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+      i18n.changeLanguage(i18n.language === 'RU' ? 'EN' : 'RU');
     };
 
     return (
       <Button
-        theme={ThemeButton.BACKGROUND}
+        theme={ThemeButton.PRIMARY}
         className={clsx(classes.LanguageSwitcher, className)}
         onClick={toggle}
-        size={ButtonSize.LARGE}
+        size={ButtonSize.MEDIUM}
         shaped={ShapedTypes.SQUARE}
-      >
-        <span>{i18n.language}</span>
-      </Button>
+        text={i18n.language}
+      />
     );
   }
 );

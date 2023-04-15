@@ -1,6 +1,6 @@
 .title {
   color: var(--text-color);
-  font: var(--font-l);
+  font: var(--font-m);
 }
 
 .text {
@@ -9,13 +9,7 @@
 }
 
 .error {
-  & .title {
+  & > * {
     color: var(--anxiety-color);
-    font: var(--font-l);
-  }
-
-  & .text {
-    color: var(--anxiety-color);
-    font: var(--font-s);
   }
 }

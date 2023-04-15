@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDynamicModuleLoader } from 'shared/hooks/useDynamicModuleLoader';
 import { Form } from 'shared/ui/Form/Form';
 import { Input } from 'shared/ui/Input/Input';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { userSchema } from '../../config/schema';
@@ -53,16 +54,22 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         dispatch(loginByUsername(values));
       }}
     >
-      {({ handleSubmit, handleChange, isValid, errors, values }) => {
-        return (
-          <Form
-            className={clsx(classes.LoginForm, className)}
-            title="Форма авторизации"
-            error={serverError}
-            onSubmit={handleSubmit}
-            isValid={isValid}
-            isLoading={isLoading}
-          >
+      {({ handleSubmit, handleChange, isValid, errors, values }) => (
+        <Form
+          className={clsx(classes.LoginForm, className)}
+          title="Форма авторизации"
+          error={serverError}
+          onSubmit={handleSubmit}
+          isValid={isValid}
+          isLoading={isLoading}
+        >
+          <div className={classes.form_content}>
+            <Text
+              theme={TextTheme.ERROR}
+              text={serverError}
+              className={classes.error}
+            />
+
             {Object.entries(fields).map(
               ([name, type]: [keyof LoginByUsernameProps, string]) => (
                 <Input
@@ -78,9 +85,9 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
                 />
               )
             )}
-          </Form>
-        );
-      }}
+          </div>
+        </Form>
+      )}
     </Formik>
   );
 });

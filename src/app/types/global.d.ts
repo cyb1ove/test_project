@@ -18,3 +18,4 @@ declare module '*.svg' {
 declare const IS_DEV: boolean;
 declare const API: string;
 declare module 'clsx';
+declare module '@testing-library/user-event/dist/types/';

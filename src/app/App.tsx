@@ -2,7 +2,7 @@ import './styles/index.scss';
 
 import clsx from 'clsx';
 import { selectUserAuthData, userActions } from 'entities/User';
-import { SignupPage } from 'pages/SignupPage/ui/SignupPage';
+import { SignupPage } from 'pages/SignupPage';
 import { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';

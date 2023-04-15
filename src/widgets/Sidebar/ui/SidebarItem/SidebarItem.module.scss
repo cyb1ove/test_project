@@ -1,7 +1,5 @@
-.text {
-  transition: opacity 0.3s;
-
-  &.collapsed {
-    opacity: 0;
+.SidebarItem {
+  & [data-text] {
+    padding-left: 8px;
   }
 }

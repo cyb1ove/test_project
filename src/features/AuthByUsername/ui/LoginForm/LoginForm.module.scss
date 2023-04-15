@@ -5,7 +5,25 @@
 
   color: var(--text-color);
 
-  border-radius: 12px;
+  border-radius: var(--button-border-radius);
 
   background-color: var(--sidebar-color);
+}
+
+.form_content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  margin-top: 0.5em;
+}
+
+.error {
+  position: absolute;
+  top: -2em;
+  left: 50%;
+
+  transform: translateX(-50%);
 }
