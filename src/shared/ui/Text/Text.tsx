@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { I18NamespaceContext } from 'shared/contexts/i18NamespaceContext';
 
 import classes from './Text.module.scss';
 
@@ -22,7 +23,9 @@ export const Text: FC<TextProps> = ({
   title,
   theme = TextTheme.PRIMARY,
 }) => {
-  const { t } = useTranslation();
+  const { namespace } = useContext(I18NamespaceContext);
+  const { t } = useTranslation(namespace);
+  console.log(title, namespace);
 
   return (
     <div className={clsx(classes.Text, classes[theme], className)}>
