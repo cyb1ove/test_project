@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Text } from 'shared/ui/Text/Text';
 
 import classes from './PageError.module.scss';

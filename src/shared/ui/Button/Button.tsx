@@ -6,8 +6,6 @@ import {
   createElement,
   CSSProperties,
   ReactElement,
-  useCallback,
-  useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import useHover from 'react-use-hover';

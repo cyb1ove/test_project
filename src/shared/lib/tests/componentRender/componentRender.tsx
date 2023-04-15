@@ -1,8 +1,5 @@
 import { render } from '@testing-library/react';
-import {
-  StableNavigateContext,
-  StableNavigateContextProvider,
-} from 'app/providers/StableNavigateContextProvider/ui/StableNavigateContextProvider';
+import { StableNavigateContextProvider } from 'app/providers/StableNavigateContextProvider/ui/StableNavigateContextProvider';
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { ReactElement } from 'react';
 import { I18nextProvider } from 'react-i18next';

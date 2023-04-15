@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import { FC, ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Button, ButtonSize, ThemeButton } from '../Button/Button';
 import { Text } from '../Text/Text';
