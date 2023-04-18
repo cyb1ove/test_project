@@ -17,6 +17,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "strict": true,
   },
   "ts-node": {
     "compilerOptions": {
@@ -28,5 +29,5 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "eslintrc.js"
-  ],
+, "src/features/AuthByUsername/model/selectors/selecLoginPassword"  ],
 }

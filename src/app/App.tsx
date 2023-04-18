@@ -6,9 +6,12 @@ import { SignupPage } from 'pages/SignupPage';
 import { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { useTheme } from 'shared/hooks/useTheme';
+import {
+  hiddenRouteConfig,
+  routeConfig,
+} from 'shared/config/routeConfig/routeConfig';
 import { MainLayout } from 'shared/layouts/MainLayout/MainLayout';
+import { useTheme } from 'shared/lib/hooks/useTheme';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
@@ -43,13 +46,15 @@ export const App = () => {
           <Route path="/login" element={<SignupPage />} />
 
           <Route path="/" element={RequireAuth}>
-            {Object.values(routeConfig).map(({ path, element }) => (
-              <Route
-                key={path}
-                element={<Suspense fallback={<Loader />}>{element}</Suspense>}
-                path={path}
-              />
-            ))}
+            {Object.values({ ...routeConfig, ...hiddenRouteConfig }).map(
+              ({ path, element }) => (
+                <Route
+                  key={path}
+                  element={<Suspense fallback={<Loader />}>{element}</Suspense>}
+                  path={path}
+                />
+              )
+            )}
           </Route>
         </Routes>
       </Suspense>

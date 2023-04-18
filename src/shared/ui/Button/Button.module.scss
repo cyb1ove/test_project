@@ -1,3 +1,9 @@
+$sizes: (
+  'small': 36px,
+  'medium': 45px,
+  'large': 54px,
+);
+
 .Button {
   position: relative;
 
@@ -5,7 +11,6 @@
   justify-content: flex-start;
   align-items: center;
 
-  height: 2.5em;
   padding: 0 20px;
 
   font-size: var(--font-size-m);
@@ -17,6 +22,88 @@
   cursor: pointer;
 
   overflow: hidden;
+
+  & .icon,
+  &:is(.square, .circle) > * {
+    display: flex;
+
+    margin: auto;
+  }
+
+  &:has(:is(.extra_container, .icon)),
+  &:is(.square, .circle) {
+    padding: 0;
+  }
+
+  &.circle {
+    border-radius: 50%;
+  }
+
+  & .extra_container {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-shrink: 0;
+
+    height: 100%;
+
+    & > * {
+      margin: auto;
+    }
+  }
+
+  & .text_container {
+    position: relative;
+
+    flex-grow: 1;
+
+    margin: 0 -6px;
+    padding: 0 6px;
+
+    &::after {
+      content: attr(data-text);
+
+      opacity: 0;
+    }
+  }
+
+  & .text {
+    position: absolute;
+    z-index: 2;
+  }
+
+  @each $name, $size in $sizes {
+    &.#{$name} {
+      height: $size;
+
+      & .extra_container {
+        min-width: $size;
+      }
+
+      &:has(.icon),
+      &:is(.square, .circle),
+      &.collapsed {
+        width: $size;
+      }
+
+      &:has(.text_container:last-child) {
+        padding-right: $size;
+
+        & .text {
+          right: 0;
+        }
+      }
+
+      &:has(.text_container:first-child) {
+        padding-left: $size;
+
+        & .text {
+          left: 0;
+        }
+      }
+    }
+  }
 }
 
 .outline {
@@ -29,8 +116,6 @@
   background: none;
 
   box-shadow: none;
-
-  transition: all 0.3s;
 
   &::before {
     position: absolute;
@@ -51,7 +136,6 @@
     top: 0;
     left: 0;
     content: '';
-    z-index: -1;
 
     width: 200px;
     height: 200px;
@@ -101,107 +185,14 @@
   background-color: var(--primary-color-light);
 }
 
-.circle {
-  border-radius: 50%;
-}
-
-:is(.small, .medium, .large):is(.square, .circle) {
-  padding: 0;
-}
-
 .loader {
   position: absolute;
   top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%) scale(0.5);
-}
 
-.left_container,
-.right_container {
-  display: none;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-}
-
-.extraElements {
-  padding: 0;
-
-  & :is(.left_container, .right_container) {
-    display: flex;
-  }
-}
-
-.text_container {
-  position: relative;
-
-  flex-grow: 1;
-
-  margin: 0 -6px;
-  padding: 0 6px;
-
-  &::after {
-    content: attr(data-text);
-
+  & ~ * {
     opacity: 0;
   }
-}
-
-.text {
-  position: absolute;
-
-  &.right_align {
-    right: 0;
-  }
-
-  &.left_align {
-    left: 0;
-  }
-}
-
-.small {
-  height: 36px;
-
-  & :is(.left_container, .right_container) {
-    height: 36px;
-    min-width: 36px;
-  }
-
-  &:is(.square, .circle),
-  &.collapsed {
-    width: 36px;
-  }
-}
-
-.medium {
-  height: 45px;
-
-  & :is(.left_container, .right_container) {
-    height: 45px;
-    min-width: 45px;
-  }
-
-  &:is(.square, .circle),
-  &.collapsed {
-    width: 45px;
-  }
-}
-
-.large {
-  height: 54px;
-
-  & :is(.left_container, .right_container) {
-    height: 54px;
-    min-width: 54px;
-  }
-
-  &:is(.square, .circle),
-  &.collapsed {
-    width: 54px;
-  }
-}
-
-.icon {
-  justify-content: center;
 }

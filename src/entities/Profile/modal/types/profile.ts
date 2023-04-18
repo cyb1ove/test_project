@@ -1,6 +1,8 @@
 export interface Profile {
-  firstName: string;
-  lastName: string;
+  username: string;
+  firstname: string;
+  email: string;
+  lastname: string;
   avatar: string;
 }
 

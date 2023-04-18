@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useTheme } from 'shared/hooks/useTheme';
+import { useTheme } from 'shared/lib/hooks/useTheme';
 
 import { Portal } from '../Portal/Portal';
 import classes from './Modal.module.scss';
@@ -26,9 +26,9 @@ export const Modal = forwardRef<Ref, ModalProps>(
   ({ className, children, isOpen, onClose, isDisabled, ...rest }, ref) => {
     const { theme } = useTheme();
     const [isClosing, setIsClosing] = useState(false);
-    const timeoutRef = useRef(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    const mods: Record<string, boolean> = {
+    const mods: Record<string, boolean | undefined> = {
       [classes.openned]: isOpen,
       [classes.closing]: isClosing,
     };

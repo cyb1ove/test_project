@@ -14,6 +14,12 @@ interface LanguageSwitcherProps {
   className?: string;
 }
 
+const languageSwitcherTheme = {
+  general: ThemeButton.PRIMARY,
+  size: ButtonSize.MEDIUM,
+  shaped: ShapedTypes.SQUARE,
+};
+
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
   ({ className }) => {
     const { i18n } = useTranslation();
@@ -21,18 +27,17 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
     const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
 
-      i18n.changeLanguage(i18n.language === 'RU' ? 'EN' : 'RU');
+      i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
 
     return (
       <Button
-        theme={ThemeButton.PRIMARY}
+        theme={languageSwitcherTheme}
         className={clsx(classes.LanguageSwitcher, className)}
         onClick={toggle}
-        size={ButtonSize.MEDIUM}
-        shaped={ShapedTypes.SQUARE}
-        text={i18n.language}
-      />
+      >
+        {i18n.language}
+      </Button>
     );
   }
 );

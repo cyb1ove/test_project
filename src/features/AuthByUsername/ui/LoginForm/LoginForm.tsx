@@ -3,7 +3,7 @@ import { selectLoginError } from 'features/AuthByUsername/model/selectors/select
 import { Formik } from 'formik';
 import { FC, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useDynamicModuleLoader } from 'shared/hooks/useDynamicModuleLoader';
+import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { Form } from 'shared/ui/Form/Form';
 import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
@@ -43,12 +43,14 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     dispatch(loginActions.updateField({ key, value }));
   }, 250);
 
+  const initialValues: Fields = {
+    username: '',
+    password: '',
+  };
+
   return (
     <Formik
-      initialValues={{
-        username: '',
-        password: '',
-      }}
+      initialValues={initialValues}
       validationSchema={userSchema}
       onSubmit={(values) => {
         dispatch(loginByUsername(values));
@@ -70,8 +72,8 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
               className={classes.error}
             />
 
-            {Object.entries(fields).map(
-              ([name, type]: [keyof LoginByUsernameProps, string]) => (
+            {(Object.entries(fields) as [keyof Fields, string][]).map(
+              ([name, type]) => (
                 <Input
                   name={name}
                   type={type}

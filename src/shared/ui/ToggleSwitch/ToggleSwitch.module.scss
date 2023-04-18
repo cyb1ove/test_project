@@ -1,0 +1,140 @@
+.ToggleSwitch {
+  position: relative;
+
+  display: inline-block;
+
+  width: 75px;
+
+  text-align: left;
+  vertical-align: middle;
+
+  user-select: none;
+
+  & .checkbox {
+    display: none;
+  }
+
+  & .label {
+    display: block;
+
+    margin: 0;
+
+    border: 0 solid var(--background-text-color);
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+  }
+
+  & .inner {
+    display: block;
+
+    width: 200%;
+    margin-left: -100%;
+
+    transition: margin 0.3s ease-in 0s;
+
+    &::before,
+    &::after {
+      display: block;
+      float: left;
+
+      width: 50%;
+      height: 34px;
+      padding: 0;
+      box-sizing: border-box;
+
+      color: var(--text-color);
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 34px;
+    }
+
+    &::before {
+      content: attr(data-yes);
+
+      padding-left: 10px;
+
+      color: var(--text-color);
+      text-transform: uppercase;
+
+      background-color: #2f855a;
+    }
+
+    &::after {
+      content: attr(data-no);
+
+      padding-right: 10px;
+
+      color: var(--text-color);
+      text-align: right;
+      text-transform: uppercase;
+
+      background-color: var(--sidebar-color);
+    }
+  }
+
+  & .switch {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+
+    display: block;
+
+    width: 24px;
+    margin: 5px;
+
+    border: 0 solid var(--text-color);
+    border-radius: 20px;
+
+    background: var(--text-color);
+
+    transition: all 0.3s ease-in 0s;
+  }
+
+  &-disabled {
+    background-color: gray;
+
+    cursor: not-allowed;
+
+    &::before {
+      background-color: gray;
+
+      cursor: not-allowed;
+    }
+  }
+
+  & .checkbox:checked + .label {
+    & .inner {
+      margin-left: 0;
+    }
+
+    & .switch {
+      right: 0;
+    }
+  }
+
+  &.small_switch {
+    width: 40px;
+
+    .inner {
+      &::after,
+      &::before {
+        content: '';
+
+        height: 20px;
+
+        line-height: 20px;
+      }
+    }
+
+    .switch {
+      right: 20px;
+
+      width: 16px;
+      margin: 2px;
+    }
+  }
+}

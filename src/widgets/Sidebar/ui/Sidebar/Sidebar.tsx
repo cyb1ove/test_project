@@ -17,6 +17,12 @@ interface SidebarProps {
   className?: string;
 }
 
+const buttonTheme = {
+  general: ThemeButton.PRIMARY,
+  size: ButtonSize.SMALL,
+  shaped: ShapedTypes.CIRCLE,
+};
+
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -42,12 +48,11 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
       <Button
         data-testid="collapse-button"
         className={classes.collapsedBtn}
-        theme={ThemeButton.PRIMARY}
-        size={ButtonSize.SMALL}
-        shaped={ShapedTypes.CIRCLE}
+        theme={buttonTheme}
         onClick={onToggle}
-        icon={<ShevronIcon className={clsx(mods)} />}
-      />
+      >
+        <Button.Icon svg={ShevronIcon} className={clsx(mods)} />
+      </Button>
 
       <UserMenu />
     </aside>

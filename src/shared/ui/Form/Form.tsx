@@ -9,11 +9,16 @@ interface FormProps {
   className?: string;
   children: ReactElement;
   title: string;
-  error: string;
+  error?: string;
   onSubmit: (e?: React.FormEvent<HTMLFormElement>) => void;
   isValid: boolean;
   isLoading: boolean;
 }
+
+const formButtonTheme = {
+  general: ThemeButton.PRIMARY,
+  size: ButtonSize.SMALL,
+};
 
 export const Form: FC<FormProps> = ({
   className,
@@ -32,10 +37,10 @@ export const Form: FC<FormProps> = ({
       type="submit"
       className={classes.loginBtn}
       disabled={!isValid}
-      size={ButtonSize.SMALL}
-      theme={ThemeButton.PRIMARY}
+      theme={formButtonTheme}
       pending={isLoading}
-      text="Войти"
-    />
+    >
+      Войти
+    </Button>
   </form>
 );

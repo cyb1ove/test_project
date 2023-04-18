@@ -23,9 +23,7 @@ export const Text: FC<TextProps> = ({
   title,
   theme = TextTheme.PRIMARY,
 }) => {
-  const { namespace } = useContext(I18NamespaceContext);
-  const { t } = useTranslation(namespace);
-  console.log(title, namespace);
+  const { t } = useTranslation();
 
   return (
     <div className={clsx(classes.Text, classes[theme], className)}>

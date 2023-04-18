@@ -5,7 +5,7 @@ import { selectLoginError } from './selectLoginError';
 
 describe('getLoginError.test', () => {
   test('should return error', async () => {
-    const state: DeepPartial<StateSchema> = {
+    const state = {
       loginForm: {
         error: 'error',
       },
@@ -15,7 +15,7 @@ describe('getLoginError.test', () => {
   });
 
   test('should return undefined', async () => {
-    const state: DeepPartial<StateSchema> = {};
+    const state = {};
     expect(selectLoginError(state as StateSchema)).toBeUndefined();
   });
 });

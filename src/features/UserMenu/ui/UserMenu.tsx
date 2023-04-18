@@ -19,16 +19,25 @@ export const UserMenu: FC<UserButtonProps> = ({ className, collapsed }) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  const userMenuTheme = {
+    general: ThemeButton.OUTLINE,
+    size: ButtonSize.LARGE,
+  };
+
   return (
     <Button
       className={clsx(classes.UserButton, className)}
-      theme={ThemeButton.OUTLINE}
-      size={ButtonSize.LARGE}
+      theme={userMenuTheme}
       onDoubleClick={onLogout}
-      leftElement={<img className={classes.avatar} src={user?.avatar} />}
       collapsed={collapsed}
-      text={user?.username}
-      align="left"
-    />
+    >
+      <Button.Extra
+        component="img"
+        className={classes.avatar}
+        src={user?.avatar}
+      />
+
+      <Button.Text text={user?.username || ''} align="center" />
+    </Button>
   );
 };

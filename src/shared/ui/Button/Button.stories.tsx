@@ -3,7 +3,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import ListIcon from 'shared/assets/icons/list.svg';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 
-import { Button, ButtonSize, ShapedTypes, ThemeButton } from './Button';
+import { Button, ButtonSize, ThemeButton } from './Button';
 
 export default {
   title: 'shared/Button',
@@ -57,7 +57,7 @@ export const Round = Template.bind({});
 Round.args = {
   icon: <ListIcon />,
   theme: ThemeButton.PRIMARY,
-  shaped: ShapedTypes.CIRCLE,
+  children: <Button.Icon svg={ListIcon} />,
 };
 
 export const SizeSmall = Template.bind({});
@@ -86,7 +86,6 @@ Squared.args = {
   text: 'RU',
   theme: ThemeButton.PRIMARY,
   size: ButtonSize.MEDIUM,
-  shaped: ShapedTypes.SQUARE,
 };
 
 export const WithImage = Template.bind({});
@@ -97,10 +96,14 @@ WithImage.args = {
 
 export const WithImageSizeM = Template.bind({});
 WithImageSizeM.args = {
-  text: 'Hello world',
-  rightElement: <ListIcon />,
-  size: ButtonSize.MEDIUM,
-  theme: ThemeButton.OUTLINE,
+  theme: {
+    general: ThemeButton.OUTLINE,
+    size: ButtonSize.MEDIUM,
+  },
+  children: [
+    <Button.Extra component={ListIcon} />,
+    <Button.Text text="Hello world" />,
+  ],
 };
 
 export const WithImageSizeMPRIMARY = Template.bind({});

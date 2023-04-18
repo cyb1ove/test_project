@@ -4,15 +4,19 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { Text } from 'shared/ui/Text/Text';
 
 export const MainPage = () => {
-  const { namespace, setNamespace } = useContext(I18NamespaceContext);
+  // const { namespace, setNamespace } = useContext(I18NamespaceContext);
 
-  useLayoutEffect(() => {
-    setNamespace('main');
-  }, []);
+  // useLayoutEffect(() => {
+  //   setNamespace('main');
+  // }, []);
 
-  if (namespace !== 'main') {
-    return <Loader />;
-  }
+  // if (namespace !== 'main') {
+  //   return <Loader />;
+  // }
 
-  return <Text title="Главная страница" />;
+  return (
+    <div>
+      <Text title="Главная страница" />
+    </div>
+  );
 };

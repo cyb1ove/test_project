@@ -1,23 +1,23 @@
 import { ComponentType, FC, memo, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import {
-  I18NamespaceContext,
-  NamespaceType,
-} from 'shared/contexts/i18NamespaceContext';
+// import {
+//   I18NamespaceContext,
+//   NamespaceType,
+// } from 'shared/contexts/I18NamespaceContext';
 
 import classes from './MainLayout.module.scss';
 
 interface MainLayoutProps {
-  navbar?: ComponentType;
-  sidebar?: ComponentType;
+  navbar: ComponentType;
+  sidebar: ComponentType;
 }
 
 export const MainLayout: FC<MainLayoutProps> = memo(
   ({ navbar: Navbar, sidebar: Sidebar }) => {
-    const [namespace, setNamespace] = useState<NamespaceType>(null);
+    // const [namespace, setNamespace] = useState<NamespaceType>();
 
     return (
-      <I18NamespaceContext.Provider value={{ namespace, setNamespace }}>
+      <>
         <div className={classes.sidebarWrapper}>
           <Sidebar />
         </div>
@@ -35,7 +35,7 @@ export const MainLayout: FC<MainLayoutProps> = memo(
             </div>
           </div>
         </div>
-      </I18NamespaceContext.Provider>
+      </>
     );
   }
 );

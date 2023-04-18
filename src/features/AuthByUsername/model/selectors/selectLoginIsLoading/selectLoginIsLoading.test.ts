@@ -5,7 +5,7 @@ import { selectLoginIsLoading } from './selectLoginIsLoading';
 
 describe('getLoginError.test', () => {
   test('should return error', async () => {
-    const state: DeepPartial<StateSchema> = {
+    const state = {
       loginForm: {
         isLoading: true,
       },
@@ -15,7 +15,7 @@ describe('getLoginError.test', () => {
   });
 
   test('should return undefined', async () => {
-    const state: DeepPartial<StateSchema> = {};
+    const state = {};
     expect(selectLoginIsLoading(state as StateSchema)).toEqual(false);
   });
 });
