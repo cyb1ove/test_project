@@ -144,8 +144,7 @@ export function Button<C extends BaseButtonComponent = 'button'>({
   const { t } = useTranslation();
   const [ref, isHovered] = useHover();
 
-  const actualTheme =
-    isHovered || active ? ThemeButton.PRIMARY || general : general;
+  const actualTheme = isHovered || active ? general + '_hover' : general;
   const plainMods = [classes[actualTheme], classes[size], classes[shaped]];
   const objectMods = {
     [classes.collapsed]: collapsed,

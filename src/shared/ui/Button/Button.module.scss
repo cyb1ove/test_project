@@ -35,6 +35,8 @@ $sizes: (
 
   overflow: hidden;
 
+  transition: all 0.3s;
+
   @each $name, $size in $sizes {
     &.#{$name} {
       height: $size;
@@ -118,17 +120,8 @@ $sizes: (
   }
 }
 
-.outline {
-  position: relative;
-
-  color: var(--text-color);
-
-  border: none;
-
-  background: none;
-
-  box-shadow: none;
-
+.outline,
+.outline_hover {
   &::before {
     position: absolute;
     top: 0;
@@ -162,16 +155,26 @@ $sizes: (
 
     transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
   }
+}
 
-  &:hover {
-    box-shadow: 0 0 5px 2px var(--widgets-shadow-color);
-  }
+.outline {
+  color: var(--text-color);
 
-  &:hover::before {
+  border: none;
+
+  background: none;
+
+  box-shadow: none;
+}
+
+.outline_hover {
+  box-shadow: 0 0 5px 2px var(--widgets-shadow-color);
+
+  &::before {
     opacity: 0;
   }
 
-  &:hover::after {
+  &::after {
     opacity: 1;
     transform: scale(1) translate(-10px, -70px);
     transform-origin: 100px 100px;
@@ -185,14 +188,22 @@ $sizes: (
   transition: all 0.3s;
 }
 
-.primary {
+.primary,
+.primary_hover {
   color: var(--background-text-color);
 
   background-color: var(--primary-color);
 }
 
-.secondary {
+.secondary,
+.secondary_hover {
   color: var(--text-color);
 
   background-color: var(--primary-color-light);
+}
+
+.empty_hover {
+  color: var(--background-text-color);
+
+  background-color: var(--primary-color);
 }
