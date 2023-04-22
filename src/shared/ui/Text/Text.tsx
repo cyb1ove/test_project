@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { I18NamespaceContext } from 'shared/contexts/i18NamespaceContext';
 
 import classes from './Text.module.scss';
 

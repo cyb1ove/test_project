@@ -19,3 +19,9 @@ declare const IS_DEV: boolean;
 declare const API: string;
 declare module 'clsx';
 declare module '@testing-library/user-event/dist/types/';
+
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;

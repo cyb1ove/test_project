@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
-import { User, userActions } from 'entities/User';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { isAxiosError } from 'shared/lib/guards/isAxiosError';
 
 import { Profile } from '../../types/profile';
 
@@ -22,7 +21,11 @@ export const fetchProfileData = createAsyncThunk<
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response?.data.message);
+      } else {
+        return rejectWithValue('error');
+      }
     }
   }
 );

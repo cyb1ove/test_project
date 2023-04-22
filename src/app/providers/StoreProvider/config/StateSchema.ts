@@ -1,6 +1,7 @@
 import {
   AnyAction,
   CombinedState,
+  Dispatch,
   EnhancedStore,
   Reducer,
   ReducersMapObject,
@@ -38,4 +39,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<E> {
   rejectValue: E;
   extra: ThunkExtraArg;
+  dipatch: Dispatch;
 }

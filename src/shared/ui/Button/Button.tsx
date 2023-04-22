@@ -123,9 +123,7 @@ export function Text({ text, align, maxLengthText, offset = 0 }: TextProps) {
   );
 }
 
-export function Icon({ svg: SVG, className, rounded }: IconProps) {
-  // const mods = { [classes.circle]: rounded };
-
+export function Icon({ svg: SVG, className }: IconProps) {
   return (
     <div className={clsx(classes.icon, className)}>
       <SVG />
@@ -146,6 +144,7 @@ export function Button<C extends BaseButtonComponent = 'button'>({
   className,
   ...otherProps
 }: ButtonProps<C>) {
+  const { t } = useTranslation();
   const [ref, isHovered] = useHover();
 
   const actualTheme = isHovered ? hoverTheme || general : general;
@@ -162,7 +161,7 @@ export function Button<C extends BaseButtonComponent = 'button'>({
     >
       {pending && <ButtonLoader className={classes.loader} />}
 
-      {typeof children === 'string' ? <span>{children}</span> : children}
+      {typeof children === 'string' ? <span>{t(children)}</span> : children}
     </BaseButton>
   );
 }
@@ -170,88 +169,3 @@ export function Button<C extends BaseButtonComponent = 'button'>({
 Button.Icon = Icon;
 Button.Extra = Extra;
 Button.Text = Text;
-
-// export function Button<C extends BaseButtonComponent = 'button'>({
-//   children,
-//   className,
-//   theme = ThemeButton.EMPTY,
-//   size = ButtonSize.SMALL,
-//   shaped,
-//   pending,
-//   leftElement,
-//   rightElement,
-//   text,
-//   align,
-//   maxLengthText,
-//   collapsed,
-//   hoverTheme,
-//   icon,
-//   ...otherProps
-// }: ButtonProps<C>) {
-//   const [initialWidth, setInitialWidth] = useState(0);
-//   const [ref, isHovered] = useHover();
-//   const { t } = useTranslation();
-
-//   const actualTheme = isHovered ? hoverTheme || theme : theme;
-//   const plainMods = [classes[actualTheme], classes[size], classes[shaped]];
-//   const extraElementsExist = !!(leftElement || rightElement);
-
-//   const objectMods = {
-//     [classes.extraElements]: extraElementsExist,
-//     [classes.collapsed]: collapsed,
-//     [classes.icon]: !!shaped, // we can use more css setting icon class in Icon component
-//   };
-
-//   const textMods = [
-//     classes[`${align}_align`],
-//     {
-//       [classes.right_align]: leftElement && !rightElement && !align,
-//       [classes.left_align]: rightElement && !leftElement && !align,
-//     },
-//   ];
-
-//   const renderContent = () => {
-//     if (icon) {
-//       return icon;
-//     }
-
-//     if (pending) {
-//       return <ButtonLoader className={classes.loader} />;
-//     }
-
-//     let dataText;
-
-//     if (maxLengthText) {
-//       dataText = maxLengthText;
-//     } else if (extraElementsExist) {
-//       dataText = text || children; // we can set dataText static and use more css
-//     }
-
-//     return (
-//       <>
-//         <div className={classes.left_container}>{leftElement}</div>
-
-//         <div data-text={dataText} className={classes.text_container}>
-//           <span className={clsx(classes.text, textMods)}>
-//             {t(text || children)}
-//           </span>
-//         </div>
-
-//         <div className={classes.right_container}>{rightElement}</div>
-//       </>
-//     );
-//   };
-
-//   return (
-//     <BaseButton<C>
-//       className={clsx(classes.Button, className, plainMods, objectMods)}
-//       innerRef={(node: HTMLElement) =>
-//         setInitialWidth(node ? node.offsetWidth : 0)
-//       }
-//       style={pending ? { width: initialWidth } : {}}
-//       {...(otherProps as BaseButtonProps<C>)}
-//     >
-//       {renderContent()}
-//     </BaseButton>
-//   );
-// }

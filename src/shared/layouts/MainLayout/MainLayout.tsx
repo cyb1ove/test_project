@@ -1,10 +1,10 @@
-import { ComponentType, FC, memo, useState } from 'react';
+import { ComponentType, FC, memo } from 'react';
 import { Outlet } from 'react-router-dom';
+
 // import {
 //   I18NamespaceContext,
 //   NamespaceType,
 // } from 'shared/contexts/I18NamespaceContext';
-
 import classes from './MainLayout.module.scss';
 
 interface MainLayoutProps {

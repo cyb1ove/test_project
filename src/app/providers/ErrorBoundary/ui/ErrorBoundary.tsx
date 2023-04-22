@@ -19,12 +19,12 @@ export class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {
-  prevPath: string;
+  prevPath?: string;
 
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { error: null, errorInfo: null };
-    this.prevPath = null;
+    this.state = { error: undefined, errorInfo: undefined };
+    this.prevPath = undefined;
   }
 
   static getDerivedStateFromError(error: Error) {
@@ -36,7 +36,7 @@ export class ErrorBoundary extends React.Component<
   }
 
   clearError = () => {
-    this.setState({ error: null, errorInfo: null });
+    this.setState({ error: undefined, errorInfo: undefined });
   };
 
   render() {

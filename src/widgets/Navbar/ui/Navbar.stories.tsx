@@ -22,6 +22,7 @@ Light.decorators = [
     loginForm: {
       username: 'guy',
       password: 'password',
+      isLoading: false,
     },
   }),
 ];
@@ -34,6 +35,7 @@ Dark.decorators = [
     loginForm: {
       username: 'guy',
       password: 'password',
+      isLoading: false,
     },
   }),
 ];

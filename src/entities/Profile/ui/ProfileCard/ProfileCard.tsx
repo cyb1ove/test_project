@@ -13,6 +13,10 @@ interface ProfileCardProps {
   className?: string;
 }
 
+const profileButtonTheme = {
+  general: ThemeButton.OUTLINE,
+};
+
 export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
   const data = useSelector(selectProfileData);
   const isLoading = useSelector(selectProfileIsLoading);
@@ -22,7 +26,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
     <div className={clsx(classes.ProfileCard, className)}>
       <Text title="Профиль" />
 
-      <Button theme={ThemeButton.OUTLINE} text="Редактировать" />
+      <Button theme={profileButtonTheme}>Редактировать</Button>
     </div>
   );
 };

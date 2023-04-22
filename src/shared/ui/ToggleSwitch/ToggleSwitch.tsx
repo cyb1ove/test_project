@@ -31,7 +31,11 @@ export const ToggleSwitch: FC<Props> = ({
 
   return (
     <div
-      className={clsx(classes.ToggleSwitch, { [classes.small_switch]: small })}
+      className={clsx(
+        classes.ToggleSwitch,
+        { [classes.small_switch]: small },
+        className
+      )}
     >
       <input
         type="checkbox"

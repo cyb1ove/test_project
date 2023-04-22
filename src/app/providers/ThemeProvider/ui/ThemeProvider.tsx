@@ -6,11 +6,14 @@ export enum Theme {
 }
 
 interface ThemeContextProps {
-  theme?: Theme;
-  setTheme?: (theme: Theme) => void;
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }
 
-export const ThemeContext = createContext<ThemeContextProps>({});
+export const ThemeContext = createContext<ThemeContextProps>({
+  theme: Theme.LIGHT,
+  setTheme: () => {},
+});
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 
 const defaultTheme =

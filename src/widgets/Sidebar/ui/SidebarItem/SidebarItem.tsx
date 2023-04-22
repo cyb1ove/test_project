@@ -12,7 +12,7 @@ interface SidebarItemProps extends LinkProps {
 }
 
 const buttonTheme = (active: boolean) => ({
-  theme: active ? ThemeButton.PRIMARY : ThemeButton.EMPTY,
+  general: active ? ThemeButton.PRIMARY : ThemeButton.EMPTY,
   size: ButtonSize.LARGE,
   hoverTheme: ThemeButton.PRIMARY,
 });

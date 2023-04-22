@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import {
   forwardRef,
+  MutableRefObject,
   ReactNode,
   useCallback,
   useEffect,
@@ -26,7 +27,7 @@ export const Modal = forwardRef<Ref, ModalProps>(
   ({ className, children, isOpen, onClose, isDisabled, ...rest }, ref) => {
     const { theme } = useTheme();
     const [isClosing, setIsClosing] = useState(false);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef() as MutableRefObject<NodeJS.Timeout>;
 
     const mods: Record<string, boolean | undefined> = {
       [classes.openned]: isOpen,
@@ -57,6 +58,7 @@ export const Modal = forwardRef<Ref, ModalProps>(
 
       return () => {
         document.removeEventListener('keydown', onKeyDown);
+        clearTimeout(timeoutRef.current);
       };
     }, [isOpen, onCloseModal]);
 

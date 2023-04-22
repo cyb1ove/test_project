@@ -4,6 +4,18 @@ $sizes: (
   'large': 54px,
 );
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0.5);
+
+  & ~ * {
+    opacity: 0;
+  }
+}
+
 .Button {
   position: relative;
 
@@ -22,6 +34,38 @@ $sizes: (
   cursor: pointer;
 
   overflow: hidden;
+
+  @each $name, $size in $sizes {
+    &.#{$name} {
+      height: $size;
+
+      & .extra_container {
+        min-width: $size;
+      }
+
+      &:has(.icon),
+      &:is(.square, .circle),
+      &.collapsed {
+        width: $size;
+      }
+
+      &:has(.text_container:last-child) {
+        padding-right: $size;
+
+        & .text {
+          right: 0;
+        }
+      }
+
+      &:has(.text_container:first-child) {
+        padding-left: $size;
+
+        & .text {
+          left: 0;
+        }
+      }
+    }
+  }
 
   & .icon,
   &:is(.square, .circle) > * {
@@ -71,38 +115,6 @@ $sizes: (
   & .text {
     position: absolute;
     z-index: 2;
-  }
-
-  @each $name, $size in $sizes {
-    &.#{$name} {
-      height: $size;
-
-      & .extra_container {
-        min-width: $size;
-      }
-
-      &:has(.icon),
-      &:is(.square, .circle),
-      &.collapsed {
-        width: $size;
-      }
-
-      &:has(.text_container:last-child) {
-        padding-right: $size;
-
-        & .text {
-          right: 0;
-        }
-      }
-
-      &:has(.text_container:first-child) {
-        padding-left: $size;
-
-        & .text {
-          left: 0;
-        }
-      }
-    }
   }
 }
 
@@ -183,16 +195,4 @@ $sizes: (
   color: var(--text-color);
 
   background-color: var(--primary-color-light);
-}
-
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%) scale(0.5);
-
-  & ~ * {
-    opacity: 0;
-  }
 }

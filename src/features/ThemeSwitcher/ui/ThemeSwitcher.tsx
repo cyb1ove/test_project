@@ -1,11 +1,11 @@
 import { Theme } from 'app/providers/ThemeProvider';
 import { FC } from 'react';
+import Switch from 'react-switch';
 import MoonIcon from 'shared/assets/icons/moon.svg';
 import SunIcon from 'shared/assets/icons/sun.svg';
 import { useTheme } from 'shared/lib/hooks/useTheme';
 import useToggle from 'shared/lib/hooks/useToggle';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
-import { ToggleSwitch } from 'shared/ui/ToggleSwitch/ToggleSwitch';
 
 import classes from './ThemeSwitcher.module.scss';
 
@@ -31,21 +31,6 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
     setChecked();
   };
 
-  // const switcher = (
-  //   <Switch
-  //     className={classes.ThemeSwitcher}
-  //     onChange={() => {}}
-  //     checked={checked}
-  //     offColor="#ddd"
-  //     onColor="#fff"
-  //     onHandleColor="#000"
-  //     handleDiameter={10}
-  //     uncheckedIcon={false}
-  //     height={20}
-  //     width={38}
-  //   />
-  // );
-
   return (
     <Button
       theme={themeSwithcerTheme}
@@ -61,12 +46,17 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
       />
 
       <Button.Extra
-        component={ToggleSwitch}
-        id="theme_switcher"
+        component={Switch}
         className={classes.ThemeSwitcher}
         onChange={() => {}}
         checked={checked}
-        small
+        offColor="#ddd"
+        onColor="#fff"
+        onHandleColor="#000"
+        handleDiameter={10}
+        uncheckedIcon={false}
+        height={20}
+        width={38}
       />
     </Button>
   );
