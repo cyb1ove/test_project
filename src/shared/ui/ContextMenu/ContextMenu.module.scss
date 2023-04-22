@@ -1,0 +1,27 @@
+.ContextMenu {
+  border-radius: var(--button-border-radius);
+
+  background-color: var(--sidebar-color);
+
+  box-shadow: 0 2px 8px var(--widgets-shadow-color);
+
+  overflow: hidden;
+}
+
+.header {
+  padding: 1rem 0.5rem;
+
+  border-bottom: 1.5px solid var(--primary-color-light);
+}
+
+.items {
+  padding: 0.5rem;
+
+  line-height: 1.45;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-color-light);
+  }
+}

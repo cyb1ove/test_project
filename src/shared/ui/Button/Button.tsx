@@ -8,7 +8,6 @@ import {
   ReactElement,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHover } from 'shared/lib/hooks/useHover';
 
 import { ButtonLoader } from '../ButtonLoader/ButtonLoader';
 import classes from './Button.module.scss';
@@ -22,7 +21,9 @@ type BaseProps<C extends BaseButtonComponent> = {
   component?: C;
   className?: string;
   style?: CSSProperties;
-  innerRef?: React.RefObject<HTMLElement>;
+  innerRef?:
+    | React.RefObject<HTMLElement>
+    | React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 } & Attributes;
 
 type BaseButtonProps<C extends BaseButtonComponent> =
@@ -76,6 +77,9 @@ type ButtonProps<C extends BaseButtonComponent> = BaseButtonProps<C> & {
     | [ReactElement, ReactElement]
     | [ReactElement, ReactElement, ReactElement]
     | string;
+  innerRef?:
+    | React.RefObject<HTMLElement>
+    | React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 };
 
 type TextProps = {
@@ -139,21 +143,21 @@ export function Button<C extends BaseButtonComponent = 'button'>({
   collapsed,
   children,
   className,
+  innerRef,
   ...otherProps
 }: ButtonProps<C>) {
   const { t } = useTranslation();
-  const [ref, isHovered] = useHover();
 
-  const actualTheme = isHovered || active ? general + '_hover' : general;
-  const plainMods = [classes[actualTheme], classes[size], classes[shaped]];
+  const plainMods = [classes[general], classes[size], classes[shaped]];
   const objectMods = {
     [classes.collapsed]: collapsed,
+    [classes.active]: active,
   };
 
   return (
     <BaseButton<C>
       className={clsx(classes.Button, className, plainMods, objectMods)}
-      innerRef={ref}
+      innerRef={innerRef}
       {...(otherProps as BaseButtonProps<C>)}
     >
       {pending && <ButtonLoader className={classes.loader} />}

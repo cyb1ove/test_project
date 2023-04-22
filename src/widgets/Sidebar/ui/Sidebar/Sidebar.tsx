@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { UserMenu } from 'features/UserMenu';
+import { UserMenu } from 'entities/User';
 import { FC, useState } from 'react';
 import ShevronIcon from 'shared/assets/icons/shevron.svg';
 import {
@@ -8,8 +8,8 @@ import {
   ShapedTypes,
   ThemeButton,
 } from 'shared/ui/Button/Button';
-import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 
+import { SidebarItemsList } from '../../model/items';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import classes from './Sidebar.module.scss';
 

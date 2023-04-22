@@ -1,7 +1,7 @@
 {
   "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "users": [{ "id": 1, "username": "slave", "password": "123456", "avatar": "https://pbs.twimg.com/media/EYxQuxvWkAETUfb.jpg" }],
-  "profile": { "username": "slave", "email": "slave@jabroni.gay", "firstname": "Van", "lastname": "Darkholm", "avatar": "https://pbs.twimg.com/media/EYxQuxvWkAETUfb.jpg" }
+  "users": [{ "id": 1, "username": "slave", "password": "123456", "email": "slave@jabroni.gay", "avatar": "https://pbs.twimg.com/media/EYxQuxvWkAETUfb.jpg" }],
+  "profile": { "username": "slave", "firstname": "Van", "lastname": "Darkholm", "avatar": "https://pbs.twimg.com/media/EYxQuxvWkAETUfb.jpg" }
 }
   

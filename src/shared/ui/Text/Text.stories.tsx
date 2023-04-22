@@ -19,8 +19,8 @@ const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {
-  text: 'Lorem ipsum dolor sit',
-  title: 'Lorem ipsum dolor sit',
+  text: 'cyb1ove.ua@gmail.com',
+  title: 'Андрей Зайкин',
 };
 
 export const Dark = Template.bind({});

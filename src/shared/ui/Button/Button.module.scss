@@ -48,6 +48,7 @@ $sizes: (
       &:is(.square, .circle),
       &.collapsed {
         width: $size;
+        padding: 0;
       }
 
       &:has(.text_container:last-child) {
@@ -130,8 +131,15 @@ $sizes: (
   }
 }
 
-.outline,
-.outline_hover {
+.outline {
+  color: var(--text-color);
+
+  border: none;
+
+  background: none;
+
+  box-shadow: none;
+
   &::before {
     position: absolute;
     top: 0;
@@ -166,26 +174,19 @@ $sizes: (
 
     transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
   }
-}
 
-.outline {
-  color: var(--text-color);
+  &:hover,
+  &.active {
+    box-shadow: 0 2px 8px var(--widgets-shadow-color);
+  }
 
-  border: none;
-
-  background: none;
-
-  box-shadow: none;
-}
-
-.outline_hover {
-  box-shadow: 0 0 5px 2px var(--widgets-shadow-color);
-
-  &::before {
+  &:hover::before,
+  &.active::before {
     opacity: 0;
   }
 
-  &::after {
+  &:hover::after,
+  &.active::after {
     opacity: 1;
     transform: scale(1) translate(-10px, -70px);
     transform-origin: 100px 100px;
@@ -199,22 +200,23 @@ $sizes: (
   transition: all 0.3s;
 }
 
-.primary,
-.primary_hover {
+.primary {
   color: var(--background-text-color);
 
   background-color: var(--primary-color);
 }
 
-.secondary,
-.secondary_hover {
+.secondary {
   color: var(--text-color);
 
   background-color: var(--primary-color-light);
 }
 
-.empty_hover {
-  color: var(--background-text-color);
+.empty {
+  &:hover,
+  &.active {
+    color: var(--background-text-color);
 
-  background-color: var(--primary-color);
+    background-color: var(--primary-color);
+  }
 }
