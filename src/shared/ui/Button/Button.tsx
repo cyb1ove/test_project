@@ -70,6 +70,7 @@ type ButtonProps<C extends BaseButtonComponent> = BaseButtonProps<C> & {
   };
   pending?: boolean;
   collapsed?: boolean;
+  active?: boolean;
   children:
     | ReactElement
     | [ReactElement, ReactElement]
@@ -132,13 +133,9 @@ export function Icon({ svg: SVG, className }: IconProps) {
 }
 
 export function Button<C extends BaseButtonComponent = 'button'>({
-  theme: {
-    general = ThemeButton.EMPTY,
-    size = ButtonSize.SMALL,
-    shaped,
-    hoverTheme,
-  },
+  theme: { general = ThemeButton.EMPTY, size = ButtonSize.SMALL, shaped },
   pending,
+  active,
   collapsed,
   children,
   className,
@@ -147,7 +144,8 @@ export function Button<C extends BaseButtonComponent = 'button'>({
   const { t } = useTranslation();
   const [ref, isHovered] = useHover();
 
-  const actualTheme = isHovered ? hoverTheme || general : general;
+  const actualTheme =
+    isHovered || active ? ThemeButton.PRIMARY || general : general;
   const plainMods = [classes[actualTheme], classes[size], classes[shaped]];
   const objectMods = {
     [classes.collapsed]: collapsed,
