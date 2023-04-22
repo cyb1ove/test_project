@@ -20,7 +20,6 @@ $sizes: (
   position: relative;
 
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 
   padding: 0 20px;
@@ -69,16 +68,28 @@ $sizes: (
     }
   }
 
+  &:has(:is(.extra_container, .icon)),
+  &:is(.square, .circle) {
+    padding: 0;
+  }
+
+  &:has(.extra_container:first-child) {
+    justify-content: flex-start;
+  }
+
+  &:has(.extra_container:last-child) {
+    justify-content: flex-end;
+  }
+
+  & .text {
+    z-index: 2;
+  }
+
   & .icon,
   &:is(.square, .circle) > * {
     display: flex;
 
     margin: auto;
-  }
-
-  &:has(:is(.extra_container, .icon)),
-  &:is(.square, .circle) {
-    padding: 0;
   }
 
   &.circle {
@@ -112,11 +123,10 @@ $sizes: (
 
       opacity: 0;
     }
-  }
 
-  & .text {
-    position: absolute;
-    z-index: 2;
+    & .text {
+      position: absolute;
+    }
   }
 }
 
@@ -141,6 +151,7 @@ $sizes: (
     top: 0;
     left: 0;
     content: '';
+    z-index: 1;
 
     width: 200px;
     height: 200px;

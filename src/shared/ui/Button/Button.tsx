@@ -158,7 +158,11 @@ export function Button<C extends BaseButtonComponent = 'button'>({
     >
       {pending && <ButtonLoader className={classes.loader} />}
 
-      {typeof children === 'string' ? <span>{t(children)}</span> : children}
+      {typeof children === 'string' ? (
+        <span className={classes.text}>{t(children)}</span>
+      ) : (
+        children
+      )}
     </BaseButton>
   );
 }
